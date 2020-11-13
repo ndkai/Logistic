@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "573917474101",
+    "firebase_url": "https://logistic-364ae.firebaseio.com",
+    "project_id": "logistic-364ae",
+    "storage_bucket": "logistic-364ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573917474101:android:541cbafeacaa0f24a6307c",
+        "android_client_info": {
+          "package_name": "com.iot.logisticsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573917474101-d5dk3f3ou85tf08ucm4j9uakrot8fn1o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeBDo6wMM8KGaZbVwEgvyw1LpzexHzBJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573917474101-d5dk3f3ou85tf08ucm4j9uakrot8fn1o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
