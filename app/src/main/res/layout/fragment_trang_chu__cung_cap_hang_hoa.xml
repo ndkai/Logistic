@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.TrangChu_CungCapHangHoaFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bar"
+        android:background="?android:attr/windowBackground">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:id="@+id/toolbar"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground">
+
+                <TextView
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="30sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cung Cấp Hàng Hóa" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_below="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_black"
+        android:id="@+id/linear"
+        android:orientation="horizontal"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginRight="-5dp">
+
+        <Button
+            android:background="#00BCD4"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="Tự vận chuyển"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tv_tuMangDenCCC" />
+
+        <Button
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:text="CẦN LẤY HÀNG"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tv_cccDenLay"/>
+        
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/linear"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/last_linear"
+            android:padding="15dp"
+            android:orientation="vertical"
+            android:layout_below="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông Tin Người Ủng Hộ"/>
+            <LinearLayout
+                android:layout_marginStart="30dp"
+                android:weightSum="3"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/tv_tenUser"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SĐT : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/tv_sđtUser"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/tv_diachiUser"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Thông Tin Hàng Hóa "
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_marginStart="30dp"
+                android:weightSum="3"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loại Hàng : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <Spinner
+                    android:id="@+id/spn_loaiHang"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên Hàng : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/tv_tenHang"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khối Lượng : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <EditText
+                    android:id="@+id/tv_khoiLuongHang"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ln_tuMangDenCCC"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Thông Tin Vận Chuyển"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_marginStart="30dp"
+                    android:weightSum="3"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thời Gian Dự Kiến : "
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+                    <EditText
+                        android:id="@+id/tv_thoiGianDuKien"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vị Trí Kho : "
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+                    <EditText
+                        android:id="@+id/tv_viTriKho"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:text="Xác Nhận"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_xacnhan"/>
+
+            <TextView
+                android:visibility="gone"
+                android:text="Tự Vận Chuyển"
+                android:id="@+id/tv_loaiHinhVanChuyen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+</LinearLayout>

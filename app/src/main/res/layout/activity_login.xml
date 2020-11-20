@@ -23,6 +23,7 @@
             android:text="Logistic" />
 
         <EditText
+            android:text="hao@gmail.com"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:id="@+id/email"
@@ -32,6 +33,7 @@
             android:background="@drawable/editext_background"
             android:layout_height="wrap_content"/>
         <EditText
+            android:text="123456"
             android:inputType="textPassword"
             android:padding="10dp"
             android:id="@+id/password"
@@ -58,6 +60,21 @@
     </LinearLayout>
 
 
-
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="0.2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:ignore="Suspicious0dp">
+        <TextView
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account ? Sign up"
+            android:id="@+id/txt_signup"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
 
 </LinearLayout>
