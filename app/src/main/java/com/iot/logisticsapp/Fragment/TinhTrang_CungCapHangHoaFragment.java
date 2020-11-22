@@ -68,7 +68,7 @@ public class TinhTrang_CungCapHangHoaFragment extends Fragment {
                 if(error!=null){return;}
                 if (!value.isEmpty()) {
                     for (QueryDocumentSnapshot documentSnapshot : value){
-
+                        cungCapHangHoaList.clear();
                         CungCapHangHoa cungCapHangHoa = documentSnapshot.toObject(CungCapHangHoa.class);
                         if(cungCapHangHoa.getUserID().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
                             cungCapHangHoaList.add(cungCapHangHoa);

@@ -1,6 +1,7 @@
 package com.iot.logisticsapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.R;
+import com.iot.logisticsapp.chiTietHangHoaActivity;
 
 import java.util.List;
 
@@ -42,6 +44,15 @@ public class tinhTrangHangHoaAdapter extends RecyclerView.Adapter<tinhTrangHangH
         } else {
             holder.tinhTrangVanChuyen.setText("Đã Nhận");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, chiTietHangHoaActivity.class);
+                intent.putExtra("cungCapHangHoaID",cungCapHangHoa.getCungCapHangHoaID());
+                intent.putExtra("chucNang","cungCapHangHoa");
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

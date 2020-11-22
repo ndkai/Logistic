@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="vertical"
+    android:layout_margin="7dp"
+    android:background="@drawable/background_listview">
+
+    <TextView
+        android:layout_margin="5dp"
+        android:textSize="16sp"
+        android:text="dotHangYeuCau"
+        android:id="@+id/dotHangYeuCau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_margin="5dp"
+        android:textSize="16sp"
+        android:text="viTriKho"
+        android:id="@+id/viTriKho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_margin="5dp"
+        android:textSize="16sp"
+        android:text="vanDe"
+        android:id="@+id/vanDe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_margin="5dp"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="canGiupDo"
+            android:id="@+id/canGiupDo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:text="tinhTrang"
+            android:id="@+id/tinhTrang"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_margin="5dp"
+        android:textSize="16sp"
+        android:text="chiTietTinhTrang"
+        android:id="@+id/chiTietTinhTrangKhoKhan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

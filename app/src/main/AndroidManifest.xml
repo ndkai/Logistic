@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main_NguoiNhanCuuTroActivity"></activity>
+        <activity android:name=".chiTietHangHoaActivity"></activity>
+        <activity android:name=".Main_NguoiNhanCuuTroActivity" />
         <activity android:name=".CungCapNhanLucActivity" />
         <activity android:name=".CungCapVanTaiActivity" />
         <activity android:name=".CungCapHangHoaAcitivity" />

@@ -1,6 +1,7 @@
 package com.iot.logisticsapp.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.iot.logisticsapp.Model.NguoiNhanCuuTro;
 import com.iot.logisticsapp.R;
+import com.iot.logisticsapp.chiTietHangHoaActivity;
 
 import java.util.List;
 
@@ -34,14 +36,23 @@ public class yeuCauCuuTroAdapter extends RecyclerView.Adapter<yeuCauCuuTroAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         final NguoiNhanCuuTro nguoiNhanCuuTro = mNguoiNhanCuuTro.get(position);
-        holder.dotHangCuuTro.setText("Đợt hàng : " + nguoiNhanCuuTro.getDotCuuTroID());
+        holder.dotHangCuuTro.setText("Đợt Hàng : " + nguoiNhanCuuTro.getDotCuuTroID());
         holder.diaChiUser.setText("Từ : " + nguoiNhanCuuTro.getDiaChiUser());
-        holder.hangHoaYeuCau.setText("Đến : " + nguoiNhanCuuTro.getCanGiupDo());
+        holder.hangHoaYeuCau.setText("Nhu cầu : " + nguoiNhanCuuTro.getCanGiupDo());
         if(nguoiNhanCuuTro.getTinhTrang()==0){
             holder.tinhTrangVanChuyen.setText("Chờ Vận Chuyển");
         } else {
             holder.tinhTrangVanChuyen.setText("Đã Nhận");
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, chiTietHangHoaActivity.class);
+                intent.putExtra("dotCuuTroID",nguoiNhanCuuTro.getDotCuuTroID());
+                intent.putExtra("chucNang","yeuCauCuuTro");
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
