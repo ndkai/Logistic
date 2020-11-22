@@ -1,6 +1,7 @@
 package com.iot.logisticsapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -9,9 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.iot.logisticsapp.Fragment.TinhTrang_CungCapHangHoaFragment;
 import com.iot.logisticsapp.Fragment.TrangChu_CungCapHangHoaFragment;
 
 public class CungCapHangHoaAcitivity extends AppCompatActivity {
+
+    private static final String TAG = "CungCapHangHoaActivity";
+
     BottomNavigationView bottomNavigationView;
     Fragment selecFragment = null;
     @Override
@@ -35,7 +40,9 @@ public class CungCapHangHoaAcitivity extends AppCompatActivity {
                             selecFragment = new TrangChu_CungCapHangHoaFragment();
                             break;
                         case R.id.nav_tinhtrang:
-                            Toast.makeText(CungCapHangHoaAcitivity.this, "Tình Trạng", Toast.LENGTH_SHORT).show();
+                            selecFragment = new TinhTrang_CungCapHangHoaFragment();
+                            Log.d(TAG,"error : " );
+                            break;
                         case R.id.nav_feedback:
                             Toast.makeText(CungCapHangHoaAcitivity.this, "Feedback", Toast.LENGTH_SHORT).show();
                         case R.id.nav_hotro:

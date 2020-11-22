@@ -24,7 +24,7 @@ import com.iot.logisticsapp.R;
 
 public class TrangChu_CungCapVanTaiFragment extends Fragment {
 
-    EditText tv_tenTaiXe, tv_cmndTaiXe, tv_gplxTaiXe, tv_bienSo, tv_tuNgay, tv_denNgay;
+    EditText tv_tenTaiXe, tv_cmndTaiXe, tv_gplxTaiXe, tv_bienSo, tv_tuNgay, tv_denNgay, tv_taiTrong;
     Spinner spn_loaiXe;
     String arr[] = {"Xe Thông Thường",   "Xe Đặc Biệt"};
     Button btn_xacnhan;
@@ -45,6 +45,7 @@ public class TrangChu_CungCapVanTaiFragment extends Fragment {
         tv_bienSo = view.findViewById(R.id.tv_bienSo);
         tv_tuNgay = view.findViewById(R.id.tv_tuNgay);
         tv_denNgay = view.findViewById(R.id.tv_denNgay);
+        tv_taiTrong = view.findViewById(R.id.tv_taiTrong);
         btn_xacnhan = view.findViewById(R.id.btn_xacnhan);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr);
@@ -75,8 +76,9 @@ public class TrangChu_CungCapVanTaiFragment extends Fragment {
         String bienSo = tv_bienSo.getText().toString();
         String tuNgay = tv_tuNgay.getText().toString();
         String denNgay = tv_denNgay.getText().toString();
+        int taiTrong = Integer.valueOf(tv_taiTrong.getText().toString());
 
-        CungCapVanTai cungCapVanTai = new CungCapVanTai(tenTaiXe,cmndTaiXe,gplxTaiXe,loaiXe,bienSo,tuNgay,denNgay);
+        CungCapVanTai cungCapVanTai = new CungCapVanTai(tenTaiXe,cmndTaiXe,gplxTaiXe,loaiXe,bienSo,tuNgay,denNgay,taiTrong);
         cungCapVanTaiRef.add(cungCapVanTai).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

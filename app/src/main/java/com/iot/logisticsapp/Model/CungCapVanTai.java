@@ -8,8 +8,9 @@ public class CungCapVanTai {
     public String bienSo ;
     public String tuNgay ;
     public String denNgay ;
+    public int taiTrong ;
 
-    public CungCapVanTai(String tenTaiXe, String cmndTaiXe, String gplxTaiXe, String loaiXe, String bienSo, String tuNgay, String denNgay) {
+    public CungCapVanTai(String tenTaiXe, String cmndTaiXe, String gplxTaiXe, String loaiXe, String bienSo, String tuNgay, String denNgay, int taiTrong) {
         this.tenTaiXe = tenTaiXe;
         this.cmndTaiXe = cmndTaiXe;
         this.gplxTaiXe = gplxTaiXe;
@@ -17,6 +18,7 @@ public class CungCapVanTai {
         this.bienSo = bienSo;
         this.tuNgay = tuNgay;
         this.denNgay = denNgay;
+        this.taiTrong = taiTrong;
     }
 
     public CungCapVanTai() {
@@ -76,5 +78,13 @@ public class CungCapVanTai {
 
     public void setDenNgay(String denNgay) {
         this.denNgay = denNgay;
+    }
+
+    public int getTaiTrong() {
+        return taiTrong;
+    }
+
+    public void setTaiTrong(int taiTrong) {
+        this.taiTrong = taiTrong;
     }
 }

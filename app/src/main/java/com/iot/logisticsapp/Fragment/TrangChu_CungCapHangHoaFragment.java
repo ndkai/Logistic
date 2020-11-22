@@ -27,6 +27,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.R;
 
@@ -137,6 +139,20 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                 }
             }
         });
+        cungCapHangHoaRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){return;}
+                if (!value.isEmpty()) {
+                    for (QueryDocumentSnapshot documentSnapshot : value){
+                        CungCapHangHoa cungCapHangHoa = documentSnapshot.toObject(CungCapHangHoa.class);
+                        cungCapHangHoa.setCungCapHangHoaID(documentSnapshot.getId());
+                        cungCapHangHoaRef.document(cungCapHangHoa.getCungCapHangHoaID()).update("cungCapHangHoaID",cungCapHangHoa.getCungCapHangHoaID());
+
+                    }
+                }
+            }
+        });
     }
 
     public void addSave(){
@@ -149,7 +165,8 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         int khoiLuongItem = Integer.valueOf(tv_khoiLuongHang.getText().toString());
         String diaChiCCC = tv_viTriKho.getText().toString();
         String loaiHinhVanChuyen = tv_loaiHinhVanChuyen.getText().toString();
-        CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(tenUser,sdtUser,diachiUser,thoiGianDuKien,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen);
+        CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,thoiGianDuKien
+                                                             ,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen,0,"kho Id",12,11);
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
