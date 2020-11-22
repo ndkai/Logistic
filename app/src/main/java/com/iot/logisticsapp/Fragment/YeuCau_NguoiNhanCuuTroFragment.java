@@ -60,7 +60,7 @@ public class YeuCau_NguoiNhanCuuTroFragment extends Fragment {
                 if(error!=null){return;}
                 if (!value.isEmpty()) {
                     for (QueryDocumentSnapshot documentSnapshot : value){
-
+                        nguoiNhanCuuTroList.clear();
                         NguoiNhanCuuTro nguoiNhanCuuTro = documentSnapshot.toObject(NguoiNhanCuuTro.class);
                         if(nguoiNhanCuuTro.getUserID().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
                             nguoiNhanCuuTroList.add(nguoiNhanCuuTro);
