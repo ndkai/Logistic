@@ -14,8 +14,8 @@ public class NguoiNhanCuuTro {
 
     public String hangHoaID ;
     public String khoID ;
-    public long kinhDo ;
-    public long viDo ;
+    public double kinhDo ;
+    public double viDo ;
 
 
     public NguoiNhanCuuTro(String userID, String tenUser, String sdtUser, String diaChiUser, String vanDe, String canGiupDo, String chiTietTinhTrang, int tinhTrang, String hangHoaID, String khoID, long kinhDo, long viDo) {
@@ -76,19 +76,19 @@ public class NguoiNhanCuuTro {
         this.khoID = khoID;
     }
 
-    public long getKinhDo() {
+    public double getKinhDo() {
         return kinhDo;
     }
 
-    public void setKinhDo(long kinhDo) {
+    public void setKinhDo(double kinhDo) {
         this.kinhDo = kinhDo;
     }
 
-    public long getViDo() {
+    public double getViDo() {
         return viDo;
     }
 
-    public void setViDo(long viDo) {
+    public void setViDo(double viDo) {
         this.viDo = viDo;
     }
 
