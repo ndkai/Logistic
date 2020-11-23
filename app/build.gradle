@@ -54,6 +54,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.4.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.rengwuxian.materialedittext:library:2.1.4'
+    implementation 'com.google.maps.android:maps-utils-ktx:2.2.0'
 
 }
 
