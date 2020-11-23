@@ -1,6 +1,7 @@
 package com.iot.logisticsapp.Model;
 
 public class CungCapVanTai {
+    public String xeID;
     public String tenTaiXe;
     public String cmndTaiXe ;
     public String gplxTaiXe;
@@ -10,7 +11,13 @@ public class CungCapVanTai {
     public String denNgay ;
     public int taiTrong ;
 
-    public CungCapVanTai(String tenTaiXe, String cmndTaiXe, String gplxTaiXe, String loaiXe, String bienSo, String tuNgay, String denNgay, int taiTrong) {
+    public String khoID;
+    public double kinhDo;
+    public double viDo;
+
+
+    public CungCapVanTai(String xeID, String tenTaiXe, String cmndTaiXe, String gplxTaiXe, String loaiXe, String bienSo, String tuNgay, String denNgay, int taiTrong, String khoID, double kinhDo, double viDo) {
+        this.xeID = xeID;
         this.tenTaiXe = tenTaiXe;
         this.cmndTaiXe = cmndTaiXe;
         this.gplxTaiXe = gplxTaiXe;
@@ -19,9 +26,20 @@ public class CungCapVanTai {
         this.tuNgay = tuNgay;
         this.denNgay = denNgay;
         this.taiTrong = taiTrong;
+        this.khoID = khoID;
+        this.kinhDo = kinhDo;
+        this.viDo = viDo;
     }
 
     public CungCapVanTai() {
+    }
+
+    public String getXeID() {
+        return xeID;
+    }
+
+    public void setXeID(String xeID) {
+        this.xeID = xeID;
     }
 
     public String getTenTaiXe() {
@@ -86,5 +104,29 @@ public class CungCapVanTai {
 
     public void setTaiTrong(int taiTrong) {
         this.taiTrong = taiTrong;
+    }
+
+    public String getKhoID() {
+        return khoID;
+    }
+
+    public void setKhoID(String khoID) {
+        this.khoID = khoID;
+    }
+
+    public double getKinhDo() {
+        return kinhDo;
+    }
+
+    public void setKinhDo(double kinhDo) {
+        this.kinhDo = kinhDo;
+    }
+
+    public double getViDo() {
+        return viDo;
+    }
+
+    public void setViDo(double viDo) {
+        this.viDo = viDo;
     }
 }

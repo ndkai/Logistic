@@ -2,7 +2,6 @@ package com.iot.logisticsapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -41,9 +40,9 @@ public class MainActivity extends AppCompatActivity {
         tv_sđtUser = findViewById(R.id.tv_sđtUser);
         tv_diachiUser = findViewById(R.id.tv_diachiUser);
         tv_chuyenVaiTro = findViewById(R.id.tv_chuyenVaiTro);
-//        cb_CCHH = findViewById(R.id.cb_CCHH);
-//        cb_CCNNL = findViewById(R.id.cb_CCNNL);
-//        cb_CCDVVT = findViewById(R.id.cb_CCDVVT);
+        cb_CCHH = findViewById(R.id.cb_CCHH);
+        cb_CCNNL = findViewById(R.id.cb_CCNNL);
+       cb_CCDVVT = findViewById(R.id.cb_CCDVVT);
 
         onClick();
     }

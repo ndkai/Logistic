@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/nav_danhsach_hanghoa"
+        android:title="Danh Sách Hàng Hóa"/>
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/nav_danhsach_xe"
+        android:title="Danh Sách Phương Tiện"/>
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/nav_danhsach_nguoicancuutro"
+        android:title="Danh Sách Người Yêu Cầu Cứu Trợ"/>
+
+</menu>

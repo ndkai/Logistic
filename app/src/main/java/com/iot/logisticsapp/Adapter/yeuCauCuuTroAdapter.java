@@ -39,6 +39,7 @@ public class yeuCauCuuTroAdapter extends RecyclerView.Adapter<yeuCauCuuTroAdapte
         holder.dotHangCuuTro.setText("Đợt Hàng : " + nguoiNhanCuuTro.getDotCuuTroID());
         holder.diaChiUser.setText("Từ : " + nguoiNhanCuuTro.getDiaChiUser());
         holder.hangHoaYeuCau.setText("Nhu cầu : " + nguoiNhanCuuTro.getCanGiupDo());
+        holder.tenNguoiYeuCauCuuTro.setText("Người yêu cầu: " + nguoiNhanCuuTro.getTenUser());
         if(nguoiNhanCuuTro.getTinhTrang()==0){
             holder.tinhTrangVanChuyen.setText("Chờ Vận Chuyển");
         } else {
@@ -61,7 +62,7 @@ public class yeuCauCuuTroAdapter extends RecyclerView.Adapter<yeuCauCuuTroAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView dotHangCuuTro, diaChiUser, hangHoaYeuCau, tinhTrangVanChuyen;
+        public TextView dotHangCuuTro, diaChiUser, hangHoaYeuCau, tinhTrangVanChuyen,tenNguoiYeuCauCuuTro;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +71,7 @@ public class yeuCauCuuTroAdapter extends RecyclerView.Adapter<yeuCauCuuTroAdapte
             diaChiUser = itemView.findViewById(R.id.diaChiUser);
             hangHoaYeuCau = itemView.findViewById(R.id.hangHoaYeuCau);
             tinhTrangVanChuyen = itemView.findViewById(R.id.tinhTrangVanChuyen);
+            tenNguoiYeuCauCuuTro = itemView.findViewById(R.id.tenNguoiYeuCauCuuTro);
 
         }
     }

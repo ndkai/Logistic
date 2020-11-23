@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -78,7 +79,8 @@ public class TrangChu_CungCapVanTaiFragment extends Fragment {
         String denNgay = tv_denNgay.getText().toString();
         int taiTrong = Integer.valueOf(tv_taiTrong.getText().toString());
 
-        CungCapVanTai cungCapVanTai = new CungCapVanTai(tenTaiXe,cmndTaiXe,gplxTaiXe,loaiXe,bienSo,tuNgay,denNgay,taiTrong);
+        CungCapVanTai cungCapVanTai = new CungCapVanTai(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenTaiXe,cmndTaiXe,gplxTaiXe,loaiXe,bienSo
+                                                        ,tuNgay,denNgay,taiTrong,"0",0,0);
         cungCapVanTaiRef.add(cungCapVanTai).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

@@ -1,8 +1,5 @@
 package com.iot.logisticsapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -17,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
+    private static final String TAG = "LoginActivity";
     EditText email, password;
     Button login;
     TextView txt_forgot;
@@ -52,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 pd.setMessage("Pleass wait ... ");
                 pd.show();
 
+
                 String str_email = email.getText().toString();
                 String str_password = password.getText().toString();
 
@@ -65,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
                                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
                                     } else {
                                         pd.dismiss();
                                         Toast.makeText(LoginActivity.this, "Fail", Toast.LENGTH_SHORT).show();
