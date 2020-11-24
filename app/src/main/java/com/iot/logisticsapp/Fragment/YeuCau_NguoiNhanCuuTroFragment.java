@@ -59,8 +59,9 @@ public class YeuCau_NguoiNhanCuuTroFragment extends Fragment {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){return;}
                 if (!value.isEmpty()) {
+                    nguoiNhanCuuTroList.clear();
                     for (QueryDocumentSnapshot documentSnapshot : value){
-                        nguoiNhanCuuTroList.clear();
+
                         NguoiNhanCuuTro nguoiNhanCuuTro = documentSnapshot.toObject(NguoiNhanCuuTro.class);
                         if(nguoiNhanCuuTro.getUserID().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())){
                             nguoiNhanCuuTroList.add(nguoiNhanCuuTro);

@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.Model.CungCapVanTai;
 import com.iot.logisticsapp.Model.Kho;
+import com.iot.logisticsapp.Model.User;
 import com.iot.logisticsapp.services.milk_delivery.MilkDelivery;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro;
-    CheckBox cb_CCHH, cb_CCNNL, cb_CCDVVT;
+    CheckBox cb_CCHH, cb_CCNNL, cb_CCDVVT, cb_CCK;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -42,13 +43,41 @@ public class MainActivity extends AppCompatActivity {
         tv_chuyenVaiTro = findViewById(R.id.tv_chuyenVaiTro);
         cb_CCHH = findViewById(R.id.cb_CCHH);
         cb_CCNNL = findViewById(R.id.cb_CCNNL);
-       cb_CCDVVT = findViewById(R.id.cb_CCDVVT);
+        cb_CCDVVT = findViewById(R.id.cb_CCDVVT);
+        cb_CCK = findViewById(R.id.cb_CCK);
 
         onClick();
+
+        FirebaseFirestore.getInstance().collection("user")
+                .document(FirebaseAuth.getInstance().getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){return;}
+                if (value.exists()) {
+
+                    User user = value.toObject(User.class);
+                    if(user.getVaiTro().equals("kho")){
+                        cb_CCHH.setVisibility(View.GONE);
+                        cb_CCNNL.setVisibility(View.GONE);
+                        cb_CCDVVT.setVisibility(View.GONE);
+                        cb_CCK.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        cb_CCK.setVisibility(View.GONE);
+                        cb_CCHH.setVisibility(View.VISIBLE);
+                        cb_CCNNL.setVisibility(View.VISIBLE);
+                        cb_CCDVVT.setVisibility(View.VISIBLE);
+                    }
+
+                }
+
+            }
+        });
+
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart()  {
         super.onStart();
         userRef.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -117,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 cb_CCDVVT.setChecked(false);
                 cb_CCNNL.setChecked(false);
+                cb_CCK.setChecked(false);
             }
         });
         cb_CCNNL.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 cb_CCHH.setChecked(false);
                 cb_CCDVVT.setChecked(false);
+                cb_CCK.setChecked(false);
             }
         });
         cb_CCDVVT.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +162,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 cb_CCHH.setChecked(false);
                 cb_CCNNL.setChecked(false);
+                cb_CCK.setChecked(false);
+            }
+        });
+        cb_CCK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cb_CCHH.setChecked(false);
+                cb_CCNNL.setChecked(false);
+                cb_CCDVVT.setChecked(false);
             }
         });
         tv_chuyenVaiTro.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), CungCapHangHoaAcitivity.class));
         } else if (cb_CCNNL.isChecked()) {
             startActivity(new Intent(getApplicationContext(), CungCapNhanLucActivity.class));
-        } else startActivity(new Intent(getApplicationContext(), CungCapVanTaiActivity.class));
+        } else if (cb_CCDVVT.isChecked()) {
+            startActivity(new Intent(getApplicationContext(), CungCapVanTaiActivity.class));
+        } else  startActivity(new Intent(getApplicationContext(), KhoActivity.class));
     }
 }

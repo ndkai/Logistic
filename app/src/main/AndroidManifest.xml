@@ -13,22 +13,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".KhoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Kho_ChiTietHangHoaActivity"></activity>
+        <activity android:name=".KhoActivity"></activity>
         <activity android:name=".chiTietHangHoaActivity" />
         <activity android:name=".Main_NguoiNhanCuuTroActivity" />
         <activity android:name=".CungCapNhanLucActivity" />
         <activity android:name=".CungCapVanTaiActivity" />
         <activity android:name=".CungCapHangHoaAcitivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".map.MapActivity"></activity>
+        <activity android:name=".map.MapActivity" />
         <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data

@@ -60,8 +60,9 @@ public class DanhSachNguoiCanCuuTroFragment extends Fragment {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){return;}
                 if (!value.isEmpty()) {
+                    nguoiNhanCuuTroList.clear();
                     for (QueryDocumentSnapshot documentSnapshot : value){
-                        nguoiNhanCuuTroList.clear();
+
                         NguoiNhanCuuTro nguoiNhanCuuTro = documentSnapshot.toObject(NguoiNhanCuuTro.class);
                         if(nguoiNhanCuuTro.getKhoID().equals("67Nzk5ohqY32oBYwRkS6")){
                             nguoiNhanCuuTroList.add(nguoiNhanCuuTro);

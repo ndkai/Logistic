@@ -41,11 +41,7 @@ public class chiTietHangHoaAdapter extends RecyclerView.Adapter<chiTietHangHoaAd
         holder.tv_tenHang.setText("Tên Hàng : " + cungCapHangHoa.getTenItem());
         holder.tv_khoiLuongHang.setText("Khối lượng : " + cungCapHangHoa.getKhoiLuongItem());
         holder.tv_loaiHinhVanChuyen.setText("Loại hình : " + cungCapHangHoa.getLoaiHinhVanChuyen());
-        if(cungCapHangHoa.getTinhTrangVanChuyen()==0){
-            holder.tv_tinhTrang.setText("Chờ Vận Chuyển");
-        } else {
-            holder.tv_tinhTrang.setText("Đã Nhận");
-        }
+        holder.tv_tinhTrang.setText(cungCapHangHoa.getTinhTrangVanChuyen());
     }
 
     @Override

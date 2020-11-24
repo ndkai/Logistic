@@ -1,5 +1,7 @@
 package com.iot.logisticsapp.Model;
 
+import java.util.List;
+
 public class CungCapHangHoa {
     public String cungCapHangHoaID;
     public String userID;
@@ -12,14 +14,17 @@ public class CungCapHangHoa {
     public int khoiLuongItem;
     public String diaChiCCC;
     public String loaiHinhVanChuyen;
-    public int tinhTrangVanChuyen;
+    public String tinhTrangVanChuyen;
+
+    List<String> chiTietTinhTrang;
 
     public String khoID;
     public double kinhDo;
     public double viDo;
 
 
-    public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianDuKien, String tenItem, String tenLoaiItem, int khoiLuongItem, String diaChiCCC, String loaiHinhVanChuyen, int tinhTrangVanChuyen, String khoID, long kinhDo, long viDo) {
+    public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianDuKien, String tenItem, String tenLoaiItem, int khoiLuongItem
+            , String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String khoID, long kinhDo, long viDo, List<String> chiTietTinhTrang) {
         this.userID = userID;
         this.tenUser = tenUser;
         this.sdtUser = sdtUser;
@@ -34,6 +39,7 @@ public class CungCapHangHoa {
         this.khoID = khoID;
         this.kinhDo = kinhDo;
         this.viDo = viDo;
+        this.chiTietTinhTrang = chiTietTinhTrang;
     }
 
     public CungCapHangHoa() {
@@ -127,11 +133,11 @@ public class CungCapHangHoa {
         this.loaiHinhVanChuyen = loaiHinhVanChuyen;
     }
 
-    public int getTinhTrangVanChuyen() {
+    public String getTinhTrangVanChuyen() {
         return tinhTrangVanChuyen;
     }
 
-    public void setTinhTrangVanChuyen(int tinhTrangVanChuyen) {
+    public void setTinhTrangVanChuyen(String tinhTrangVanChuyen) {
         this.tinhTrangVanChuyen = tinhTrangVanChuyen;
     }
 
@@ -157,5 +163,13 @@ public class CungCapHangHoa {
 
     public void setViDo(double viDo) {
         this.viDo = viDo;
+    }
+
+    public List<String> getChiTietTinhTrang() {
+        return chiTietTinhTrang;
+    }
+
+    public void setChiTietTinhTrang(List<String> chiTietTinhTrang) {
+        this.chiTietTinhTrang = chiTietTinhTrang;
     }
 }

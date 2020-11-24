@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -23,10 +26,10 @@ import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.Model.NguoiNhanCuuTro;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class chiTietHangHoaActivity extends AppCompatActivity {
-
+public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
     private RecyclerView recyclerView, recyclerView1;
     private chiTietHangHoaAdapter chiTietHangHoaAdapter;
     private List<CungCapHangHoa> cungCapHangHoaList;
@@ -39,25 +42,25 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
 
     TextView sdtNguoiCungCap, tenNguoiCungCap, diaChiNguoiCungCap;
 
-    TextView tv_danhsachTinhTrang;
-
-
+    TextView tv_capNhatTinhTrang, tv_danhsachTinhTrang;
+    Button btn_capNhatTinhTrang;
+    private CollectionReference cungCapHangHoaRef = db.collection("CungCapHangHoa");
 
     String t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiet_hang_hoa);
+        setContentView(R.layout.activity_kho__chi_tiet_hang_hoa);
 
         tenNguoiCungCap = findViewById(R.id.tenNguoiCungCap);
         sdtNguoiCungCap = findViewById(R.id.sdtNguoiCungCap);
         diaChiNguoiCungCap = findViewById(R.id.diaChiNguoiCungCap);
 
 
-
+        tv_capNhatTinhTrang = findViewById(R.id.tv_capNhatTinhTrang);
         tv_danhsachTinhTrang = findViewById(R.id.tv_danhsachTinhTrang);
-
+        btn_capNhatTinhTrang = findViewById(R.id.btn_capNhatTinhTrang);
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -95,11 +98,39 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
         chucNang = intent.getStringExtra("chucNang");
         vaiTro = intent.getStringExtra("vaiTro");
 
+        onClick();
 
 
         Log.d("chiTietHangHoaActivity", "error : ");
     }
 
+    private void onClick() {
+        btn_capNhatTinhTrang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(tv_capNhatTinhTrang.getText().toString().equals("Đã Hoàn Thành")){
+                    Toast.makeText(Kho_ChiTietHangHoaActivity.this, "Đã Hoàn Tất Cứu Trợ", Toast.LENGTH_SHORT).show();
+                } else{
+                    switch (tv_capNhatTinhTrang.getText().toString().trim()){
+                        case "Đã Xử Lý": t = "Đang Xử Lý, Đã Xử Lý";
+                            break;
+                        case "Đã Nhận" : t = "Đang Xử Lý, Đã Xử Lý, Đã Nhận";
+                            break;
+                        case "Đã Nhập Kho" : t = "Đang Xử Lý, Đã Xử Lý, Đã Nhận, Đã Nhập Kho";
+                            break;
+                        case "Đã Hoàng Thành" : t = "Đang Xử Lý, Đã Xử Lý, Đã Nhận, Đã Nhập Kho, Đã Hoàn Thành";
+                            break;
+
+                    }
+                    String[] chiTiet = t.split("\\s*,\\s*");
+                    List<String> chiTietTinhTrang = Arrays.asList(chiTiet);
+                    cungCapHangHoaRef.document("XJLYVh9OoKSR7nZYd1sB").update("tinhTrangVanChuyen", tv_capNhatTinhTrang.getText().toString().trim());
+                    cungCapHangHoaRef.document("XJLYVh9OoKSR7nZYd1sB").update("chiTietTinhTrang", chiTietTinhTrang);
+
+                }
+            }
+        });
+    }
 
     @Override
     public void onStart() {
@@ -121,9 +152,22 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
 
                         sdtNguoiCungCap.setText("SĐT : " + cungCapHangHoa.getSdtUser());
                         tenNguoiCungCap.setText("Tên người cung cấp : " + cungCapHangHoa.getTenUser());
+                        switch (cungCapHangHoa.getTinhTrangVanChuyen()){
+                            case "Chưa Xử Lý" : tv_capNhatTinhTrang.setText("Đã Xử Lý");
+                                break;
+                            case "Đã Xử Lý" : tv_capNhatTinhTrang.setText("Đã Nhận");
+                                break;
+                            case "Đã Nhận" : tv_capNhatTinhTrang.setText("Đã Nhập Kho");
+                                break;
+                            case "Đã Nhập Kho" : tv_capNhatTinhTrang.setText("Đã Hoàng Thành");
+                                break;
+                            case "Đã Hoàng Thành" : tv_capNhatTinhTrang.setVisibility(View.GONE);
+                                btn_capNhatTinhTrang.setVisibility(View.GONE);
+
+                        }
 
                         for (String danhSachTinhTrang : cungCapHangHoa.getChiTietTinhTrang()){
-                            data += dem + "-" + danhSachTinhTrang + "\n";
+                            data += dem + "    ---    " + danhSachTinhTrang + "\n\n";
                             dem++;
                         }
                         tv_danhsachTinhTrang.setText(data);

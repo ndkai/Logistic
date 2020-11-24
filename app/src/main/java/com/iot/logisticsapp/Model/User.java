@@ -5,6 +5,7 @@ public class User {
     public String name;
     public String phone;
     public String address;
+    public String vaiTro;
 
     public User(String userID, String name, String phone, String address) {
         this.userID = userID;
@@ -46,5 +47,13 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getVaiTro() {
+        return vaiTro;
+    }
+
+    public void setVaiTro(String vaiTro) {
+        this.vaiTro = vaiTro;
     }
 }

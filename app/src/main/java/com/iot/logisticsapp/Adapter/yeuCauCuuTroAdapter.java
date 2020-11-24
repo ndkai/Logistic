@@ -2,6 +2,7 @@ package com.iot.logisticsapp.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,7 @@ public class yeuCauCuuTroAdapter extends RecyclerView.Adapter<yeuCauCuuTroAdapte
                 Intent intent = new Intent(mContext, chiTietHangHoaActivity.class);
                 intent.putExtra("dotCuuTroID",nguoiNhanCuuTro.getDotCuuTroID());
                 intent.putExtra("chucNang","yeuCauCuuTro");
+                Log.d("yeuCauCuuTroAdapter", "error : ");
                 mContext.startActivity(intent);
             }
         });

@@ -102,6 +102,11 @@
           android:text="Cung cấp dịch vụ vận tải"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"/>
+    <CheckBox
+        android:id="@+id/cb_CCK"
+        android:text="Cung cấp kho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
       <Button
           android:layout_marginTop="20dp"

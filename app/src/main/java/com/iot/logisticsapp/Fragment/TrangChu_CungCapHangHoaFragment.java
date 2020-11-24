@@ -32,6 +32,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.R;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 public class TrangChu_CungCapHangHoaFragment extends Fragment {
 
@@ -165,8 +168,13 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         int khoiLuongItem = Integer.valueOf(tv_khoiLuongHang.getText().toString());
         String diaChiCCC = tv_viTriKho.getText().toString();
         String loaiHinhVanChuyen = tv_loaiHinhVanChuyen.getText().toString();
+
+        String chiTietTinhTrangInput = "Đang Xử Lý";
+        String[] chiTietTinhTrangArray = chiTietTinhTrangInput.split("\\s*,\\s*");
+        List<String> chiTietTinhTrang = Arrays.asList(chiTietTinhTrangArray);
+
         CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,thoiGianDuKien
-                                                             ,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen,0,"kho Id",12,11);
+                                                             ,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen,"Chưa Xử Lý","kho Id",12,11,chiTietTinhTrang);
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

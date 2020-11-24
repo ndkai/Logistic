@@ -59,8 +59,9 @@ public class DanhSachHangHoaFragment extends Fragment {
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){return;}
                 if (!value.isEmpty()) {
+                    cungCapHangHoaList.clear();
                     for (QueryDocumentSnapshot documentSnapshot : value){
-                        cungCapHangHoaList.clear();
+
                         CungCapHangHoa cungCapHangHoa = documentSnapshot.toObject(CungCapHangHoa.class);
                         if(cungCapHangHoa.getKhoID().equals("67Nzk5ohqY32oBYwRkS6")){
                             cungCapHangHoaList.add(cungCapHangHoa);

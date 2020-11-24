@@ -8,9 +8,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.iot.logisticsapp.Kho_ChiTietHangHoaActivity;
 import com.iot.logisticsapp.Model.CungCapHangHoa;
+import com.iot.logisticsapp.Model.User;
 import com.iot.logisticsapp.R;
 import com.iot.logisticsapp.chiTietHangHoaActivity;
 
@@ -20,6 +27,8 @@ public class tinhTrangHangHoaAdapter extends RecyclerView.Adapter<tinhTrangHangH
 
     private Context mContext;
     private List<CungCapHangHoa> mCungcaphanghoa;
+
+    String t ;
 
     public tinhTrangHangHoaAdapter(Context mContext, List<CungCapHangHoa> mCungcaphanghoa) {
         this.mContext = mContext;
@@ -40,18 +49,24 @@ public class tinhTrangHangHoaAdapter extends RecyclerView.Adapter<tinhTrangHangH
         holder.tenNguoiCungCap.setText("Người cung cấp : " + cungCapHangHoa.getTenUser());
         holder.diaChiUser.setText("Từ : " + cungCapHangHoa.getDiachiUser());
         holder.diaChiCCC.setText("Đến : " + cungCapHangHoa.getDiaChiCCC());
-        if(cungCapHangHoa.getTinhTrangVanChuyen()==0){
-            holder.tinhTrangVanChuyen.setText("Chờ Vận Chuyển");
-        } else {
-            holder.tinhTrangVanChuyen.setText("Đã Nhận");
-        }
+        holder.tinhTrangVanChuyen.setText(cungCapHangHoa.getTinhTrangVanChuyen());
+        vaiTroUser(cungCapHangHoa.getUserID());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, chiTietHangHoaActivity.class);
-                intent.putExtra("cungCapHangHoaID",cungCapHangHoa.getCungCapHangHoaID());
-                intent.putExtra("chucNang","cungCapHangHoa");
-                mContext.startActivity(intent);
+                if(t=="kho"){
+                    Intent intent = new Intent(mContext, Kho_ChiTietHangHoaActivity.class);
+                    intent.putExtra("cungCapHangHoaID",cungCapHangHoa.getCungCapHangHoaID());
+                    intent.putExtra("chucNang","cungCapHangHoa");
+                    mContext.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(mContext, chiTietHangHoaActivity.class);
+                    intent.putExtra("cungCapHangHoaID",cungCapHangHoa.getCungCapHangHoaID());
+                    intent.putExtra("chucNang","cungCapHangHoa");
+                    mContext.startActivity(intent);
+                }
+
             }
         });
     }
@@ -74,6 +89,25 @@ public class tinhTrangHangHoaAdapter extends RecyclerView.Adapter<tinhTrangHangH
             tenNguoiCungCap = itemView.findViewById(R.id.tenNguoiCungCap);
 
         }
+    }
+
+    public void vaiTroUser(String userID){
+        FirebaseFirestore.getInstance().collection("user")
+                .document(userID).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){return;}
+                if (value.exists()) {
+
+                    User user = value.toObject(User.class);
+                    if(user.getVaiTro().equals("kho")){
+                        t = "kho";
+                    }
+
+                }
+
+            }
+        });
     }
 
 
