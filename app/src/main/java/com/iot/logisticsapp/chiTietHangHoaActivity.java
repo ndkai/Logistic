@@ -96,7 +96,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                     if(error!=null){return;}
                     if (value.exists()) {
-
+                        cungCapHangHoaList.clear();
                         CungCapHangHoa cungCapHangHoa = value.toObject(CungCapHangHoa.class);
                         cungCapHangHoaList.add(cungCapHangHoa);
                         chiTietHangHoaAdapter.notifyDataSetChanged();
@@ -115,7 +115,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                     if(error!=null){return;}
                     if (value.exists()) {
-
+                        nguoiNhanCuuTroList.clear();
                         NguoiNhanCuuTro nguoiNhanCuuTro = value.toObject(NguoiNhanCuuTro.class);
                         nguoiNhanCuuTroList.add(nguoiNhanCuuTro);
                         chiTietHang_yeuCauCuuTroAdapter.notifyDataSetChanged();
