@@ -1,8 +1,10 @@
 package com.iot.logisticsapp.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.iot.logisticsapp.DiaChiUserMapActivity;
 import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.R;
 
@@ -95,6 +98,14 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                         addSave();
                     }
                 }
+            }
+        });
+
+        tv_diachiUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), DiaChiUserMapActivity.class));
+                Log.d("TAG","error : ");
             }
         });
 

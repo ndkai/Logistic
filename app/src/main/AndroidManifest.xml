@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChiTietTuVanActivity"></activity>
+        <activity android:name=".DiaChiUserMapActivity"></activity>
+        <activity android:name=".ChiTietTuVanActivity" />
         <activity android:name=".TuVanActivity" />
         <activity
             android:name=".map.realtime_map.RealTimeMap"
