@@ -1,5 +1,7 @@
 package com.iot.logisticsapp.Model;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class CungCapVanTai {
     public String xeID;
     public String tenTaiXe;
@@ -128,5 +130,8 @@ public class CungCapVanTai {
 
     public void setViDo(double viDo) {
         this.viDo = viDo;
+    }
+    public LatLng getLocation() {
+        return new LatLng(kinhDo, viDo);
     }
 }

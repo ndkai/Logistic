@@ -1,5 +1,7 @@
 package com.iot.logisticsapp.Model;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.List;
 
 public class CungCapHangHoa {
@@ -171,5 +173,9 @@ public class CungCapHangHoa {
 
     public void setChiTietTinhTrang(List<String> chiTietTinhTrang) {
         this.chiTietTinhTrang = chiTietTinhTrang;
+    }
+
+    public LatLng getLocation() {
+        return new LatLng(kinhDo, viDo);
     }
 }

@@ -137,7 +137,7 @@ public class TrangChu_NguoiNhanCuuTroFragment extends Fragment {
         List<String> theoDoiYeuCau = Arrays.asList(theoDoiYeuCauArray);
 
         NguoiNhanCuuTro nguoiNhanCuuTro = new NguoiNhanCuuTro(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diaChiUser,vanDe,canGiupDo
-                                                        ,chiTietTinhTrang,"Đang Xử Lý","","",12,11,theoDoiYeuCau);
+                                                        ,chiTietTinhTrang,"Đang Xử Lý","","",12,11,theoDoiYeuCau, "Thông Thườngc");
         nguoiNhanCuuTroRef.add(nguoiNhanCuuTro).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

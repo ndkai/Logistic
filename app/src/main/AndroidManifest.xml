@@ -13,8 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Kho_ChiTietHangHoaActivity"></activity>
-        <activity android:name=".KhoActivity"></activity>
+        <activity android:name=".map.realtime_map.RealTimeMap" android:screenOrientation="landscape">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".Kho_ChiTietHangHoaActivity" />
+        <activity android:name=".KhoActivity" />
         <activity android:name=".chiTietHangHoaActivity" />
         <activity android:name=".Main_NguoiNhanCuuTroActivity" />
         <activity android:name=".CungCapNhanLucActivity" />
@@ -28,11 +35,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA24y-SkYjKWPUXv_qLnnyyP3jfZzB4oU0" />
+            android:value="AIzaSyBvxgkbwvIvlee4WCoa4SAlRYsRpq_fxSA" />
     </application>
 
 </manifest>

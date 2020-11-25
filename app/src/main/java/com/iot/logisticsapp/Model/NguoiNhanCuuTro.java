@@ -1,29 +1,32 @@
 package com.iot.logisticsapp.Model;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.List;
 
 public class NguoiNhanCuuTro {
-    public String userID ;
-    public String tenUser ;
-    public String sdtUser ;
-    public String diaChiUser ;
-    public String vanDe ;
-    public String canGiupDo ;
-    public String chiTietTinhTrang ;
-    public String tinhTrang ;
+    public String userID;
+    public String tenUser;
+    public String sdtUser;
+    public String diaChiUser;
+    public String vanDe;
+    public String canGiupDo;
+    public String chiTietTinhTrang;
+    public String tinhTrang;
+    public String loai;
 
-
-    public String dotCuuTroID ;
+    public String dotCuuTroID;
     List<String> theoDoiYeuCau;
 
-    public String hangHoaID ;
-    public String khoID ;
-    public double kinhDo ;
-    public double viDo ;
+    public String hangHoaID;
+    public String khoID;
+    public double kinhDo;
+    public double viDo;
 
 
     public NguoiNhanCuuTro(String userID, String tenUser, String sdtUser, String diaChiUser, String vanDe, String canGiupDo, String chiTietTinhTrang
-            , String tinhTrang, String hangHoaID, String khoID, long kinhDo, long viDo, List<String> theoDoiYeuCau) {
+            , String tinhTrang, String hangHoaID, String khoID, long kinhDo, long viDo, List<String> theoDoiYeuCau, String loai) {
+        this.loai = loai;
         this.userID = userID;
         this.tenUser = tenUser;
         this.sdtUser = sdtUser;
@@ -152,5 +155,16 @@ public class NguoiNhanCuuTro {
 
     public void setTheoDoiYeuCau(List<String> theoDoiYeuCau) {
         this.theoDoiYeuCau = theoDoiYeuCau;
+    }
+
+    public String getLoai() {
+        return loai;
+    }
+
+    public void setLoai(String loai) {
+        this.loai = loai;
+    }
+    public LatLng getLocation() {
+        return new LatLng(kinhDo, viDo);
     }
 }

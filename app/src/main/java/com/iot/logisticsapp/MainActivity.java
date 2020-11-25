@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         c5.setKhoiLuongItem(80);
         list.add(c5);
 
-        Kho kho = new Kho(0, 0, 9999);
+        Kho kho = new Kho(0, 0, 9999, "", "Thông Thường");
 
         CungCapVanTai xe1 = new CungCapVanTai();
         xe1.setTaiTrong(10);
