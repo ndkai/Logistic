@@ -23,7 +23,7 @@
                 android:textSize="30sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cung Cấp Vận Tải" />
+                android:text="Hỗ trợ phương tiện vận tải" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -162,7 +162,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tải trọng : "
+                    android:text="Tải trọng khả dụng : "
                     android:textStyle="bold"
                     android:textSize="20sp"/>
                 <EditText
@@ -183,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Thời Gian Cung Cấp"
+                    android:text="Thời gian tham gia hỗ trợ"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <LinearLayout

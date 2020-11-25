@@ -3,14 +3,14 @@
     <item
         android:icon="@mipmap/ic_launcher"
         android:id="@+id/nav_danhsach_hanghoa"
-        android:title="Danh Sách Hàng Hóa"/>
+        android:title="Hàng Hóa"/>
     <item
         android:icon="@mipmap/ic_launcher"
         android:id="@+id/nav_danhsach_xe"
-        android:title="Danh Sách Phương Tiện"/>
+        android:title="Phương Tiện"/>
     <item
         android:icon="@mipmap/ic_launcher"
         android:id="@+id/nav_danhsach_nguoicancuutro"
-        android:title="Danh Sách Người Yêu Cầu Cứu Trợ"/>
+        android:title="Người Cần Cứu Trợ"/>
 
 </menu>
