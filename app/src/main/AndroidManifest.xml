@@ -30,7 +30,6 @@
         <activity android:name=".KhoActivity" />
         <activity android:name=".chiTietHangHoaActivity" />
         <activity android:name=".Main_NguoiNhanCuuTroActivity" />
-        <activity android:name=".CungCapNhanLucActivity" />
         <activity android:name=".CungCapVanTaiActivity" />
         <activity android:name=".CungCapHangHoaAcitivity" />
         <activity android:name=".MainActivity" />

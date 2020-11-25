@@ -93,11 +93,6 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"/>
       <CheckBox
-          android:id="@+id/cb_CCNNL"
-          android:text="Cung cấp nguồn nhân lực"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>
-      <CheckBox
           android:id="@+id/cb_CCDVVT"
           android:text="Cung cấp dịch vụ vận tải"
           android:layout_width="wrap_content"
@@ -131,7 +126,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chuyển Sang Người Nhận Cứu Trợ"/>
+        android:text="Chuyển Sang Người Cần Cứu Trợ"/>
 
 
 </LinearLayout>

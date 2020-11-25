@@ -39,7 +39,7 @@ public class TrangChu_NguoiNhanCuuTroFragment extends Fragment {
     TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro;
     EditText tv_cangiupdo, tv_chiTietTinhTrang;
     Spinner spn_vande_cangiupdo;
-    String arr[] = {"Lũ Lụt", "Tai Nạn", "Hạn Hán"};
+    String arr[] = {"Giáo dục", "Y tế", "Nơi cư trú", "Nhu yếu phẩm"};
     Button btn_xacnhan;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();

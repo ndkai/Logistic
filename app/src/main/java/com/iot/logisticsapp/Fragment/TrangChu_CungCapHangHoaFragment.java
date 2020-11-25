@@ -44,7 +44,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
     Button btn_xacnhan;
     LinearLayout ln_tuMangDenCCC;
     Spinner spn_loaiHang;
-    String arr[] = {"Hàng Thông Thường",   "Hàng Đặc Biệt"};
+    String arr[] = {"Thông Thường",  "Đặc Biệt"};
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());

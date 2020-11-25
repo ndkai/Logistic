@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro;
-    CheckBox cb_CCHH, cb_CCNNL, cb_CCDVVT, cb_CCK, cb_tuVan;
+    CheckBox cb_CCHH, cb_CCDVVT, cb_CCK, cb_tuVan;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         tv_diachiUser = findViewById(R.id.tv_diachiUser);
         tv_chuyenVaiTro = findViewById(R.id.tv_chuyenVaiTro);
         cb_CCHH = findViewById(R.id.cb_CCHH);
-        cb_CCNNL = findViewById(R.id.cb_CCNNL);
+
         cb_CCDVVT = findViewById(R.id.cb_CCDVVT);
         cb_CCK = findViewById(R.id.cb_CCK);
         cb_tuVan = findViewById(R.id.cb_tuVan);
@@ -57,17 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 if (value.exists()) {
 
                     User user = value.toObject(User.class);
-                    if(user.getVaiTro().equals("kho")){
-                        cb_CCHH.setVisibility(View.GONE);
-                        cb_CCNNL.setVisibility(View.GONE);
-                        cb_CCDVVT.setVisibility(View.GONE);
-                        cb_CCK.setVisibility(View.VISIBLE);
-                    }
-                    else {
-                        cb_CCK.setVisibility(View.GONE);
-                        cb_CCHH.setVisibility(View.VISIBLE);
-                        cb_CCNNL.setVisibility(View.VISIBLE);
-                        cb_CCDVVT.setVisibility(View.VISIBLE);
+                    if(!user.getVaiTro().equals("kho")){
+                        cb_CCK.setEnabled(false);
                     }
 
                 }
@@ -146,39 +137,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 cb_CCDVVT.setChecked(false);
-                cb_CCNNL.setChecked(false);
                 cb_CCK.setChecked(false);
-            }
-        });
-        cb_CCNNL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cb_CCHH.setChecked(false);
-                cb_CCDVVT.setChecked(false);
-                cb_CCK.setChecked(false);
+                cb_tuVan.setChecked(false);
             }
         });
         cb_CCDVVT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cb_CCHH.setChecked(false);
-                cb_CCNNL.setChecked(false);
                 cb_CCK.setChecked(false);
+                cb_tuVan.setChecked(false);
             }
         });
         cb_CCK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cb_CCHH.setChecked(false);
-                cb_CCNNL.setChecked(false);
                 cb_CCDVVT.setChecked(false);
+                cb_tuVan.setChecked(false);
             }
         });
         cb_tuVan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cb_CCHH.setChecked(false);
-                cb_CCNNL.setChecked(false);
                 cb_CCDVVT.setChecked(false);
                 cb_CCK.setChecked(false);
             }
@@ -195,8 +177,6 @@ public class MainActivity extends AppCompatActivity {
     public void Next(View view) {
         if (cb_CCHH.isChecked()) {
             startActivity(new Intent(getApplicationContext(), CungCapHangHoaAcitivity.class));
-        } else if (cb_CCNNL.isChecked()) {
-            startActivity(new Intent(getApplicationContext(), CungCapNhanLucActivity.class));
         } else if (cb_CCDVVT.isChecked()) {
             startActivity(new Intent(getApplicationContext(), CungCapVanTaiActivity.class));
         } else if (cb_tuVan.isChecked()) {
