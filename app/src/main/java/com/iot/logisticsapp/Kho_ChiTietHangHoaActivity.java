@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -105,12 +104,11 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
     }
 
     private void onClick() {
+
         btn_capNhatTinhTrang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(tv_capNhatTinhTrang.getText().toString().equals("Đã Hoàn Thành")){
-                    Toast.makeText(Kho_ChiTietHangHoaActivity.this, "Đã Hoàn Tất Cứu Trợ", Toast.LENGTH_SHORT).show();
-                } else{
+
                     switch (tv_capNhatTinhTrang.getText().toString().trim()){
                         case "Đã Xử Lý": t = "Đang Xử Lý, Đã Xử Lý";
                             break;
@@ -118,16 +116,17 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
                             break;
                         case "Đã Nhập Kho" : t = "Đang Xử Lý, Đã Xử Lý, Đã Nhận, Đã Nhập Kho";
                             break;
-                        case "Đã Hoàng Thành" : t = "Đang Xử Lý, Đã Xử Lý, Đã Nhận, Đã Nhập Kho, Đã Hoàn Thành";
+                        case "Đã Hoàn Thành" : t = "Đang Xử Lý, Đã Xử Lý, Đã Nhận, Đã Nhập Kho, Đã Hoàn Thành";
                             break;
 
                     }
                     String[] chiTiet = t.split("\\s*,\\s*");
                     List<String> chiTietTinhTrang = Arrays.asList(chiTiet);
-                    cungCapHangHoaRef.document("XJLYVh9OoKSR7nZYd1sB").update("tinhTrangVanChuyen", tv_capNhatTinhTrang.getText().toString().trim());
-                    cungCapHangHoaRef.document("XJLYVh9OoKSR7nZYd1sB").update("chiTietTinhTrang", chiTietTinhTrang);
+                    cungCapHangHoaRef.document(cungCapHangHoaID).update("tinhTrangVanChuyen", tv_capNhatTinhTrang.getText().toString().trim());
+                    cungCapHangHoaRef.document(cungCapHangHoaID).update("chiTietTinhTrang", chiTietTinhTrang);
 
-                }
+
+
             }
         });
     }
@@ -153,15 +152,15 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
                         sdtNguoiCungCap.setText("SĐT : " + cungCapHangHoa.getSdtUser());
                         tenNguoiCungCap.setText("Tên người cung cấp : " + cungCapHangHoa.getTenUser());
                         switch (cungCapHangHoa.getTinhTrangVanChuyen()){
-                            case "Chưa Xử Lý" : tv_capNhatTinhTrang.setText("Đã Xử Lý");
+                            case "Đang Xử Lý" : tv_capNhatTinhTrang.setText("Đã Xử Lý");
                                 break;
                             case "Đã Xử Lý" : tv_capNhatTinhTrang.setText("Đã Nhận");
                                 break;
                             case "Đã Nhận" : tv_capNhatTinhTrang.setText("Đã Nhập Kho");
                                 break;
-                            case "Đã Nhập Kho" : tv_capNhatTinhTrang.setText("Đã Hoàng Thành");
+                            case "Đã Nhập Kho" : tv_capNhatTinhTrang.setText("Đã Hoàn Thành");
                                 break;
-                            case "Đã Hoàng Thành" : tv_capNhatTinhTrang.setVisibility(View.GONE);
+                            case "Đã Hoàn Thành" : tv_capNhatTinhTrang.setVisibility(View.GONE);
                                 btn_capNhatTinhTrang.setVisibility(View.GONE);
 
                         }
