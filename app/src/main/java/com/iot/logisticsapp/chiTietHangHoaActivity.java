@@ -137,6 +137,8 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
             yeuCauCuuTro.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    String data = "";
+                    int dem = 1 ;
                     if(error!=null){return;}
                     if (value.exists()) {
                         nguoiNhanCuuTroList.clear();
@@ -148,6 +150,11 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                         tenNguoiCungCap.setText("Tên người yêu cầu : " + nguoiNhanCuuTro.getTenUser());
                         diaChiNguoiCungCap.setText("Vị trí : " + nguoiNhanCuuTro.getDiaChiUser());
 
+                        for (String danhSachTinhTrang : nguoiNhanCuuTro.getTheoDoiYeuCau()){
+                            data += dem + "-" + danhSachTinhTrang + "\n";
+                            dem++;
+                        }
+                        tv_danhsachTinhTrang.setText(data);
                     }
 
                 }
