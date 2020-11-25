@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -50,7 +51,7 @@ public class tinhTrangHangHoaAdapter extends RecyclerView.Adapter<tinhTrangHangH
         holder.diaChiUser.setText("Từ : " + cungCapHangHoa.getDiachiUser());
         holder.diaChiCCC.setText("Đến : " + cungCapHangHoa.getDiaChiCCC());
         holder.tinhTrangVanChuyen.setText(cungCapHangHoa.getTinhTrangVanChuyen());
-        vaiTroUser(cungCapHangHoa.getUserID());
+        vaiTroUser(FirebaseAuth.getInstance().getCurrentUser().getUid());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

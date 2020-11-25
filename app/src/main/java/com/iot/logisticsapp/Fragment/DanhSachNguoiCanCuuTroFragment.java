@@ -1,6 +1,8 @@
 package com.iot.logisticsapp.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,7 @@ public class DanhSachNguoiCanCuuTroFragment extends Fragment {
     private CollectionReference nguoiNhanCuuTroRef = db.collection("NguoiNhanCuuTro");
 
 
+    @SuppressLint("LongLogTag")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,6 +50,8 @@ public class DanhSachNguoiCanCuuTroFragment extends Fragment {
         nguoiNhanCuuTroList = new ArrayList<>();
         yeuCauCuuTroAdapter= new yeuCauCuuTroAdapter(getContext(),nguoiNhanCuuTroList);
         recyclerView.setAdapter(yeuCauCuuTroAdapter);
+
+        Log.d("DanhSachNguoiCanCuuTroFragment","error : ");
 
         return view;
     }

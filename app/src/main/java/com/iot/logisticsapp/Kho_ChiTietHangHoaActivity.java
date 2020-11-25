@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -41,9 +42,11 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
 
     TextView sdtNguoiCungCap, tenNguoiCungCap, diaChiNguoiCungCap;
 
-    TextView tv_capNhatTinhTrang, tv_danhsachTinhTrang;
-    Button btn_capNhatTinhTrang;
+    TextView tv_capNhatTinhTrang, tv_danhsachTinhTrang,tv_theoDoiYeuCau;
+    Button btn_capNhatTinhTrang, btn_theoDoiYeuCau;
+    LinearLayout ln_theoDoiYeuCau, ln_capNhatTinhTrang;
     private CollectionReference cungCapHangHoaRef = db.collection("CungCapHangHoa");
+    private CollectionReference nguoiNhanCuuTroRef = db.collection("NguoiNhanCuuTro");
 
     String t;
 
@@ -58,8 +61,14 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
 
 
         tv_capNhatTinhTrang = findViewById(R.id.tv_capNhatTinhTrang);
+        ln_capNhatTinhTrang = findViewById(R.id.ln_capNhatTinhTrang);
         tv_danhsachTinhTrang = findViewById(R.id.tv_danhsachTinhTrang);
         btn_capNhatTinhTrang = findViewById(R.id.btn_capNhatTinhTrang);
+
+        tv_theoDoiYeuCau = findViewById(R.id.tv_theoDoiYeuCau);
+        btn_theoDoiYeuCau = findViewById(R.id.btn_theoDoiYeuCau);
+        ln_theoDoiYeuCau = findViewById(R.id.ln_theoDoiYeuCau);
+
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -124,9 +133,23 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
                     List<String> chiTietTinhTrang = Arrays.asList(chiTiet);
                     cungCapHangHoaRef.document(cungCapHangHoaID).update("tinhTrangVanChuyen", tv_capNhatTinhTrang.getText().toString().trim());
                     cungCapHangHoaRef.document(cungCapHangHoaID).update("chiTietTinhTrang", chiTietTinhTrang);
+            }
+        });
 
+        btn_theoDoiYeuCau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (tv_theoDoiYeuCau.getText().toString().trim()){
+                    case "Đã Xử Lý": t = "Đang Xử Lý, Đã Xử Lý";
+                        break;
+                    case "Đã Nhận Hàng" : t = "Đang Xử Lý, Đã Xử Lý, Đã Nhận Hàng";
+                        break;
 
-
+                }
+                String[] theoDoi = t.split("\\s*,\\s*");
+                List<String> theoDoiYeuCau = Arrays.asList(theoDoi);
+                nguoiNhanCuuTroRef.document(dotCuuTroID).update("tinhTrang", tv_theoDoiYeuCau.getText().toString().trim());
+                nguoiNhanCuuTroRef.document(dotCuuTroID).update("theoDoiYeuCau", theoDoiYeuCau);
             }
         });
     }
@@ -136,6 +159,8 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
         super.onStart();
         if(chucNang.equals("cungCapHangHoa")){
             diaChiNguoiCungCap.setVisibility(View.GONE);
+            ln_theoDoiYeuCau.setVisibility(View.GONE);
+            ln_capNhatTinhTrang.setVisibility(View.VISIBLE);
             DocumentReference cungCapHangHoaRef = db.document("CungCapHangHoa/"+cungCapHangHoaID);
             cungCapHangHoaRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
@@ -160,8 +185,7 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
                                 break;
                             case "Đã Nhập Kho" : tv_capNhatTinhTrang.setText("Đã Hoàn Thành");
                                 break;
-                            case "Đã Hoàn Thành" : tv_capNhatTinhTrang.setVisibility(View.GONE);
-                                btn_capNhatTinhTrang.setVisibility(View.GONE);
+                            case "Đã Hoàn Thành" :  ln_capNhatTinhTrang.setVisibility(View.GONE);
 
                         }
 
@@ -176,10 +200,14 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
                 }
             });
         } else {
+            ln_capNhatTinhTrang.setVisibility(View.GONE);
+            ln_theoDoiYeuCau.setVisibility(View.VISIBLE);
             DocumentReference yeuCauCuuTro = db.document("NguoiNhanCuuTro/"+dotCuuTroID);
             yeuCauCuuTro.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    String data = "";
+                    int dem = 1;
                     if(error!=null){return;}
                     if (value.exists()) {
                         nguoiNhanCuuTroList.clear();
@@ -190,6 +218,23 @@ public class Kho_ChiTietHangHoaActivity extends AppCompatActivity {
                         sdtNguoiCungCap.setText("SĐT : " + nguoiNhanCuuTro.getSdtUser());
                         tenNguoiCungCap.setText("Tên người yêu cầu : " + nguoiNhanCuuTro.getTenUser());
                         diaChiNguoiCungCap.setText("Vị trí : " + nguoiNhanCuuTro.getDiaChiUser());
+
+                        switch (nguoiNhanCuuTro.getTinhTrang()){
+                            case "Đang Xử Lý" : tv_theoDoiYeuCau.setText("Đã Xử Lý");
+                                break;
+                            case "Đã Xử Lý" : tv_theoDoiYeuCau.setText("Đã Nhận Hàng");
+                                break;
+                            case "Đã Nhận Hàng" : ln_theoDoiYeuCau.setVisibility(View.GONE);
+                                break;
+
+                        }
+
+                        for (String danhSachTinhTrang : nguoiNhanCuuTro.getTheoDoiYeuCau()){
+                            data += dem + "    ---    " + danhSachTinhTrang + "\n\n";
+                            dem++;
+                        }
+                        tv_danhsachTinhTrang.setText(data);
+
 
                     }
 

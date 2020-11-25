@@ -43,12 +43,8 @@ public class chiTietHang_YeuCauCuuTroAdapter extends RecyclerView.Adapter<chiTie
         } else {
             holder.chiTietTinhTrangKhoKhan.setText(nguoiNhanCuuTro.getChiTietTinhTrang());
         }
+        holder.tinhTrang.setText(nguoiNhanCuuTro.getTinhTrang());
 
-        if(nguoiNhanCuuTro.getTinhTrang()==0){
-            holder.tinhTrang.setText("Chờ Vận Chuyển");
-        } else {
-            holder.tinhTrang.setText("Đã Nhận");
-        }
     }
 
     @Override

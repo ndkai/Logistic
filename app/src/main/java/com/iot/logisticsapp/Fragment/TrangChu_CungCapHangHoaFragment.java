@@ -174,7 +174,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         List<String> chiTietTinhTrang = Arrays.asList(chiTietTinhTrangArray);
 
         CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,thoiGianDuKien
-                                                             ,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen,"Chưa Xử Lý","kho Id",12,11,chiTietTinhTrang);
+                                                             ,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen,"Đang Xử Lý","kho Id",12,11,chiTietTinhTrang);
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

@@ -31,6 +31,9 @@ import com.iot.logisticsapp.MainActivity;
 import com.iot.logisticsapp.Model.NguoiNhanCuuTro;
 import com.iot.logisticsapp.R;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TrangChu_NguoiNhanCuuTroFragment extends Fragment {
 
     TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro;
@@ -129,8 +132,12 @@ public class TrangChu_NguoiNhanCuuTroFragment extends Fragment {
         String canGiupDo = tv_cangiupdo.getText().toString();
         String chiTietTinhTrang = tv_chiTietTinhTrang.getText().toString();
 
+        String theoDoi = "Đang Xử Lý";
+        String[] theoDoiYeuCauArray = theoDoi.split("\\s*,\\s*");
+        List<String> theoDoiYeuCau = Arrays.asList(theoDoiYeuCauArray);
+
         NguoiNhanCuuTro nguoiNhanCuuTro = new NguoiNhanCuuTro(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diaChiUser,vanDe,canGiupDo
-                                                        ,chiTietTinhTrang,0,"","",12,11);
+                                                        ,chiTietTinhTrang,"Đang Xử Lý","","",12,11,theoDoiYeuCau);
         nguoiNhanCuuTroRef.add(nguoiNhanCuuTro).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

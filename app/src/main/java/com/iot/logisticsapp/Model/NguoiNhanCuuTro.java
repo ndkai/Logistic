@@ -1,5 +1,7 @@
 package com.iot.logisticsapp.Model;
 
+import java.util.List;
+
 public class NguoiNhanCuuTro {
     public String userID ;
     public String tenUser ;
@@ -8,9 +10,11 @@ public class NguoiNhanCuuTro {
     public String vanDe ;
     public String canGiupDo ;
     public String chiTietTinhTrang ;
-    public int tinhTrang ;
+    public String tinhTrang ;
+
 
     public String dotCuuTroID ;
+    List<String> theoDoiYeuCau;
 
     public String hangHoaID ;
     public String khoID ;
@@ -18,7 +22,8 @@ public class NguoiNhanCuuTro {
     public double viDo ;
 
 
-    public NguoiNhanCuuTro(String userID, String tenUser, String sdtUser, String diaChiUser, String vanDe, String canGiupDo, String chiTietTinhTrang, int tinhTrang, String hangHoaID, String khoID, long kinhDo, long viDo) {
+    public NguoiNhanCuuTro(String userID, String tenUser, String sdtUser, String diaChiUser, String vanDe, String canGiupDo, String chiTietTinhTrang
+            , String tinhTrang, String hangHoaID, String khoID, long kinhDo, long viDo, List<String> theoDoiYeuCau) {
         this.userID = userID;
         this.tenUser = tenUser;
         this.sdtUser = sdtUser;
@@ -31,6 +36,7 @@ public class NguoiNhanCuuTro {
         this.khoID = khoID;
         this.kinhDo = kinhDo;
         this.viDo = viDo;
+        this.theoDoiYeuCau = theoDoiYeuCau;
     }
 
     public NguoiNhanCuuTro() {
@@ -44,11 +50,11 @@ public class NguoiNhanCuuTro {
         this.userID = userID;
     }
 
-    public int getTinhTrang() {
+    public String getTinhTrang() {
         return tinhTrang;
     }
 
-    public void setTinhTrang(int tinhTrang) {
+    public void setTinhTrang(String tinhTrang) {
         this.tinhTrang = tinhTrang;
     }
 
@@ -138,5 +144,13 @@ public class NguoiNhanCuuTro {
 
     public void setChiTietTinhTrang(String chiTietTinhTrang) {
         this.chiTietTinhTrang = chiTietTinhTrang;
+    }
+
+    public List<String> getTheoDoiYeuCau() {
+        return theoDoiYeuCau;
+    }
+
+    public void setTheoDoiYeuCau(List<String> theoDoiYeuCau) {
+        this.theoDoiYeuCau = theoDoiYeuCau;
     }
 }

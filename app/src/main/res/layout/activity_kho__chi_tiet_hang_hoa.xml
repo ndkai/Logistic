@@ -59,6 +59,7 @@
         android:layout_height="wrap_content"/>
 
     <LinearLayout
+        android:id="@+id/ln_capNhatTinhTrang"
         android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -79,6 +80,32 @@
             android:layout_height="match_parent"/>
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_theoDoiYeuCau"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Button
+            android:text="Cập nhật tình trạng"
+            android:id="@+id/btn_theoDoiYeuCau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:gravity="center"
+            android:background="@drawable/background_listview"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="Đã Nhận"
+            android:id="@+id/tv_theoDoiYeuCau"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+
 
     <LinearLayout
         android:layout_margin="10dp"
