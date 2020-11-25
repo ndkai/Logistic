@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/background_chitiet_tinhtrang">
+
+    <TextView
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Ten User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tenUser"/>
+    <TextView
+        android:textSize="13sp"
+        android:text="Ten User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sdtUser"/>
+    <TextView
+        android:textSize="13sp"
+        android:text="Ten User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cauHoi"/>
+
+</LinearLayout>
