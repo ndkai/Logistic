@@ -42,7 +42,6 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
     TextView tv_danhsachTinhTrang;
 
 
-
     String t;
 
     @Override
@@ -55,9 +54,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
         diaChiNguoiCungCap = findViewById(R.id.diaChiNguoiCungCap);
 
 
-
         tv_danhsachTinhTrang = findViewById(R.id.tv_danhsachTinhTrang);
-
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -77,7 +74,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         cungCapHangHoaList = new ArrayList<>();
-        chiTietHangHoaAdapter= new chiTietHangHoaAdapter(getApplicationContext(),cungCapHangHoaList);
+        chiTietHangHoaAdapter = new chiTietHangHoaAdapter(getApplicationContext(), cungCapHangHoaList);
         recyclerView.setAdapter(chiTietHangHoaAdapter);
 
         recyclerView1 = findViewById(R.id.recycle_view1);
@@ -86,7 +83,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
         recyclerView1.setLayoutManager(linearLayoutManager1);
 
         nguoiNhanCuuTroList = new ArrayList<>();
-        chiTietHang_yeuCauCuuTroAdapter= new chiTietHang_YeuCauCuuTroAdapter(getApplicationContext(),nguoiNhanCuuTroList);
+        chiTietHang_yeuCauCuuTroAdapter = new chiTietHang_YeuCauCuuTroAdapter(getApplicationContext(), nguoiNhanCuuTroList);
         recyclerView1.setAdapter(chiTietHang_yeuCauCuuTroAdapter);
 
         Intent intent = getIntent();
@@ -96,7 +93,6 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
         vaiTro = intent.getStringExtra("vaiTro");
 
 
-
         Log.d("chiTietHangHoaActivity", "error : ");
     }
 
@@ -104,15 +100,17 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        if(chucNang.equals("cungCapHangHoa")){
+        if (chucNang.equals("cungCapHangHoa")) {
             diaChiNguoiCungCap.setVisibility(View.GONE);
-            DocumentReference cungCapHangHoaRef = db.document("CungCapHangHoa/"+cungCapHangHoaID);
+            DocumentReference cungCapHangHoaRef = db.document("CungCapHangHoa/" + cungCapHangHoaID);
             cungCapHangHoaRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                     String data = "";
-                    int dem = 1 ;
-                    if(error!=null){return;}
+                    int dem = 1;
+                    if (error != null) {
+                        return;
+                    }
                     if (value.exists()) {
                         cungCapHangHoaList.clear();
                         CungCapHangHoa cungCapHangHoa = value.toObject(CungCapHangHoa.class);
@@ -122,7 +120,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                         sdtNguoiCungCap.setText("SĐT : " + cungCapHangHoa.getSdtUser());
                         tenNguoiCungCap.setText("Tên người cung cấp : " + cungCapHangHoa.getTenUser());
 
-                        for (String danhSachTinhTrang : cungCapHangHoa.getChiTietTinhTrang()){
+                        for (String danhSachTinhTrang : cungCapHangHoa.getChiTietTinhTrang()) {
                             data += dem + "-" + danhSachTinhTrang + "\n";
                             dem++;
                         }
@@ -133,13 +131,15 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                 }
             });
         } else {
-            DocumentReference yeuCauCuuTro = db.document("NguoiNhanCuuTro/"+dotCuuTroID);
+            DocumentReference yeuCauCuuTro = db.document("NguoiNhanCuuTro/" + dotCuuTroID);
             yeuCauCuuTro.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                     String data = "";
-                    int dem = 1 ;
-                    if(error!=null){return;}
+                    int dem = 1;
+                    if (error != null) {
+                        return;
+                    }
                     if (value.exists()) {
                         nguoiNhanCuuTroList.clear();
                         NguoiNhanCuuTro nguoiNhanCuuTro = value.toObject(NguoiNhanCuuTro.class);
@@ -150,7 +150,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                         tenNguoiCungCap.setText("Tên người yêu cầu : " + nguoiNhanCuuTro.getTenUser());
                         diaChiNguoiCungCap.setText("Vị trí : " + nguoiNhanCuuTro.getDiaChiUser());
 
-                        for (String danhSachTinhTrang : nguoiNhanCuuTro.getTheoDoiYeuCau()){
+                        for (String danhSachTinhTrang : nguoiNhanCuuTro.getTheoDoiYeuCau()) {
                             data += dem + "-" + danhSachTinhTrang + "\n";
                             dem++;
                         }

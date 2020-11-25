@@ -27,7 +27,7 @@
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
+l
     <LinearLayout
         android:gravity="center"
         android:layout_below="@+id/bar"

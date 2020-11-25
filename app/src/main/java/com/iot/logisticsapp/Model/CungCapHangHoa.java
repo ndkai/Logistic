@@ -10,10 +10,10 @@ public class CungCapHangHoa {
     public String tenUser;
     public String sdtUser;
     public String diachiUser;
-    public String thoiGianDuKien;
+    public String thoiGianGuiHang;
     public String tenItem;
     public String tenLoaiItem;
-    public int khoiLuongItem;
+    public int soLuong;
     public String diaChiCCC;
     public String loaiHinhVanChuyen;
     public String tinhTrangVanChuyen;
@@ -25,16 +25,16 @@ public class CungCapHangHoa {
     public double viDo;
 
 
-    public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianDuKien, String tenItem, String tenLoaiItem, int khoiLuongItem
+    public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianGuiHang, String tenItem, String tenLoaiItem, int soLuong
             , String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String khoID, long kinhDo, long viDo, List<String> chiTietTinhTrang) {
         this.userID = userID;
         this.tenUser = tenUser;
         this.sdtUser = sdtUser;
         this.diachiUser = diachiUser;
-        this.thoiGianDuKien = thoiGianDuKien;
+        this.thoiGianGuiHang = thoiGianGuiHang;
         this.tenItem = tenItem;
         this.tenLoaiItem = tenLoaiItem;
-        this.khoiLuongItem = khoiLuongItem;
+        this.soLuong = soLuong;
         this.diaChiCCC = diaChiCCC;
         this.loaiHinhVanChuyen = loaiHinhVanChuyen;
         this.tinhTrangVanChuyen = tinhTrangVanChuyen;
@@ -87,12 +87,12 @@ public class CungCapHangHoa {
         this.diachiUser = diachiUser;
     }
 
-    public String getThoiGianDuKien() {
-        return thoiGianDuKien;
+    public String getThoiGianGuiHang() {
+        return thoiGianGuiHang;
     }
 
-    public void setThoiGianDuKien(String thoiGianDuKien) {
-        this.thoiGianDuKien = thoiGianDuKien;
+    public void setThoiGianGuiHang(String thoiGianGuiHang) {
+        this.thoiGianGuiHang = thoiGianGuiHang;
     }
 
     public String getTenItem() {
@@ -111,12 +111,12 @@ public class CungCapHangHoa {
         this.tenLoaiItem = tenLoaiItem;
     }
 
-    public int getKhoiLuongItem() {
-        return khoiLuongItem;
+    public int getSoLuong() {
+        return soLuong;
     }
 
-    public void setKhoiLuongItem(int khoiLuongItem) {
-        this.khoiLuongItem = khoiLuongItem;
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
     public String getDiaChiCCC() {
