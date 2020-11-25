@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView txt_forgot;
 
     FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,30 +44,28 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
 
-
         final ProgressDialog pd = new ProgressDialog(LoginActivity.this);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                pd.setMessage("Pleass wait ... ");
+                pd.setMessage("Vui lòng đợi ... ");
                 pd.show();
 
 
                 String str_email = email.getText().toString();
                 String str_password = password.getText().toString();
 
-                if(TextUtils.isEmpty(str_email)||TextUtils.isEmpty(str_password)){
+                if (TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)) {
                     Toast.makeText(LoginActivity.this, "All files are required!", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    auth.signInWithEmailAndPassword(str_email,str_password)
+                } else {
+                    auth.signInWithEmailAndPassword(str_email, str_password)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()){
-                                       startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    if (task.isSuccessful()) {
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
                                     } else {
                                         pd.dismiss();
@@ -90,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 emailET.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
                 linearLayout.addView(emailET);
-                linearLayout.setPadding(10,10,10,10);
+                linearLayout.setPadding(10, 10, 10, 10);
 
                 builder.setView(linearLayout);
 
@@ -101,14 +100,14 @@ public class LoginActivity extends AppCompatActivity {
                         pd.setMessage("Pleass wait ... ");
                         pd.show();
 
-                        String email  = emailET.getText().toString().trim();
+                        String email = emailET.getText().toString().trim();
                         auth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 pd.dismiss();
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(LoginActivity.this, "Please, Check Your Email", Toast.LENGTH_SHORT).show();
-                                }else{
+                                } else {
                                     Toast.makeText(LoginActivity.this, "Fail", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -116,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 pd.dismiss();
-                                Toast.makeText(LoginActivity.this, e.getMessage()+"", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, e.getMessage() + "", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -134,9 +133,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 
 
 }

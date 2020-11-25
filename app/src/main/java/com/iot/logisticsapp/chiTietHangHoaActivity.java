@@ -123,7 +123,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                         tenNguoiCungCap.setText("Tên người cung cấp : " + cungCapHangHoa.getTenUser());
 
                         for (String danhSachTinhTrang : cungCapHangHoa.getChiTietTinhTrang()){
-                            data += dem + "    ---    " + danhSachTinhTrang + "\n\n";
+                            data += dem + "-" + danhSachTinhTrang + "\n";
                             dem++;
                         }
                         tv_danhsachTinhTrang.setText(data);
@@ -151,7 +151,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
                         diaChiNguoiCungCap.setText("Vị trí : " + nguoiNhanCuuTro.getDiaChiUser());
 
                         for (String danhSachTinhTrang : nguoiNhanCuuTro.getTheoDoiYeuCau()){
-                            data += dem + "    ---    " + danhSachTinhTrang + "\n\n";
+                            data += dem + "-" + danhSachTinhTrang + "\n";
                             dem++;
                         }
                         tv_danhsachTinhTrang.setText(data);

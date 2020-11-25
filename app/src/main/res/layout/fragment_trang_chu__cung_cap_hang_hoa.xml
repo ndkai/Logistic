@@ -23,11 +23,11 @@
                     android:textSize="30sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cung Cấp Hàng Hóa" />
+                    android:text="Hỗ trợ hiện vật" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-
+l
     <LinearLayout
         android:gravity="center"
         android:layout_below="@+id/bar"
@@ -51,16 +51,16 @@
             android:id="@+id/tv_tuMangDenCCC" />
 
         <Button
-            android:background="#EFF2F3"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:text="CẦN LẤY HÀNG"
+            android:id="@+id/tv_cccDenLay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/tv_cccDenLay"/>
-        
+            android:background="#EFF2F3"
+            android:gravity="center"
+            android:text="CẦN LẤY HÀNG"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -197,7 +197,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Khối Lượng : "
+                    android:text="Số lượng : "
                     android:textStyle="bold"
                     android:textSize="20sp"/>
                 <EditText
@@ -231,7 +231,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Thời Gian Dự Kiến : "
+                        android:text="Thời gian gửi hàng: "
                         android:textStyle="bold"
                         android:textSize="20sp"/>
                     <EditText
@@ -251,7 +251,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vị Trí Kho : "
+                        android:text="Địa điểm gửi hàng: "
                         android:textStyle="bold"
                         android:textSize="20sp"/>
                     <EditText

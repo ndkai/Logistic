@@ -100,31 +100,31 @@ public class MainActivity extends AppCompatActivity {
         CungCapHangHoa c1 = new CungCapHangHoa();
         c1.setKinhDo(0);
         c1.setViDo(12);
-        c1.setKhoiLuongItem(48);
+        c1.setSoLuong(48);
         list.add(c1);
 
         CungCapHangHoa c2 = new CungCapHangHoa();
         c2.setKinhDo(6);
         c2.setViDo(5);
-        c2.setKhoiLuongItem(60);
+        c2.setSoLuong(60);
         list.add(c2);
 
         CungCapHangHoa c3 = new CungCapHangHoa();
         c3.setKinhDo(7);
         c3.setViDo(15);
-        c3.setKhoiLuongItem(43);
+        c3.setSoLuong(43);
         list.add(c3);
 
         CungCapHangHoa c4 = new CungCapHangHoa();
         c4.setKinhDo(9);
         c4.setViDo(12);
-        c4.setKhoiLuongItem(92);
+        c4.setSoLuong(92);
         list.add(c4);
 
         CungCapHangHoa c5 = new CungCapHangHoa();
         c5.setKinhDo(15);
         c5.setViDo(3);
-        c5.setKhoiLuongItem(80);
+        c5.setSoLuong(80);
         list.add(c5);
 
         Kho kho = new Kho(0, 0, 9999, "", "Thông Thường");

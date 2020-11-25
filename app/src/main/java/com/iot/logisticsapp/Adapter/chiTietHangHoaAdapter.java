@@ -39,7 +39,7 @@ public class chiTietHangHoaAdapter extends RecyclerView.Adapter<chiTietHangHoaAd
         holder.viTriCCC.setText("Đến : " + cungCapHangHoa.getDiaChiCCC());
         holder.tv_loaiHang.setText("Loại hàng : " + cungCapHangHoa.getTenLoaiItem());
         holder.tv_tenHang.setText("Tên Hàng : " + cungCapHangHoa.getTenItem());
-        holder.tv_khoiLuongHang.setText("Khối lượng : " + cungCapHangHoa.getKhoiLuongItem());
+        holder.tv_khoiLuongHang.setText("Khối lượng : " + cungCapHangHoa.getSoLuong());
         holder.tv_loaiHinhVanChuyen.setText("Loại hình : " + cungCapHangHoa.getLoaiHinhVanChuyen());
         holder.tv_tinhTrang.setText(cungCapHangHoa.getTinhTrangVanChuyen());
     }
