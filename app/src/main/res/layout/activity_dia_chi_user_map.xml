@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".DiaChiUserMapActivity">
+        <TextView
+            android:textSize="50sp"
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:text="119 Đường Tân Thới Hiệp 13, Quận 12, Thành phố Hồ Chí Minh"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:text="getlocation"
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</LinearLayout>
