@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +40,7 @@ import com.iot.logisticsapp.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class TrangChu_CungCapHangHoaFragment extends Fragment {
@@ -128,6 +127,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                         addSave();
                     }
                 }
+                Log.d("tag","e : ");
             }
         });
 
@@ -137,8 +137,8 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ln_tuMangDenCCC.setVisibility(View.VISIBLE);
-                tv_tuMangDenCCC.setBackgroundColor(Color.parseColor("#00BCD4"));
-                tv_cccDenLay.setBackgroundColor(Color.parseColor("#FBFBFB"));
+                tv_tuMangDenCCC.setTextColor(Color.parseColor("#ED1F77"));
+                tv_cccDenLay.setTextColor(Color.parseColor("#4C4B4B"));
                 tv_loaiHinhVanChuyen.setText("Tự Vận Chuyển");
             }
         });
@@ -147,8 +147,10 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 ln_tuMangDenCCC.setVisibility(View.GONE);
-                tv_cccDenLay.setBackgroundColor(Color.parseColor("#00BCD4"));
-                tv_tuMangDenCCC.setBackgroundColor(Color.parseColor("#FBFBFB"));
+
+                tv_cccDenLay.setTextColor(Color.parseColor("#ED1F77"));
+                tv_tuMangDenCCC.setTextColor(Color.parseColor("#4C4B4B"));
+                tv_cccDenLay.setBackgroundResource(R.drawable.button_background);
                 tv_loaiHinhVanChuyen.setText("Cần Lấy Hàng");
             }
         });
@@ -230,7 +232,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
             }
             tv_vido.setText(vido);
             tv_kinhdo.setText(kinhdo);
-
+            Toast.makeText(getContext(), tv_vido.getText().toString() + " -- " + tv_kinhdo.getText().toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -241,7 +243,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         String thoiGianDuKien = tv_thoiGianDuKien.getText().toString();
         String tenItem = tv_tenHang.getText().toString();
         String tenLoaiItem = spn_loaiHang.getSelectedItem().toString();
-        int khoiLuongItem = Integer.valueOf(tv_khoiLuongHang.getText().toString());
+        int khoiLuongItem = Integer.parseInt(tv_khoiLuongHang.getText().toString().trim());
         String diaChiCCC = tv_viTriKho.getText().toString();
         String loaiHinhVanChuyen = tv_loaiHinhVanChuyen.getText().toString();
 
@@ -249,9 +251,11 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         String[] chiTietTinhTrangArray = chiTietTinhTrangInput.split("\\s*,\\s*");
         List<String> chiTietTinhTrang = Arrays.asList(chiTietTinhTrangArray);
 
-        CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(), tenUser, sdtUser, diachiUser, thoiGianDuKien
-                , tenItem, tenLoaiItem, khoiLuongItem, diaChiCCC, loaiHinhVanChuyen, "Đang Xử Lý", "kho Id", Double.parseDouble(tv_kinhdo.getText().toString()), Double.parseDouble(tv_vido.getText().toString()), chiTietTinhTrang);
-        cungCapHangHoa.setDuAnId(duAnList.get(spn_duAn.getId()).getId());
+
+       CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,
+               thoiGianDuKien,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen
+               ,"123",chiTietTinhTrang,"123",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()));
+    //    cungCapHangHoa.setDuAnId(duAnList.get(spn_duAn.getId()).getId());
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -262,10 +266,10 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                 tv_viTriKho.setText("");
 
                 // update soLuong DuAn
-                DuAn duAnUpdate = duAnList.get(spn_duAn.getId());
+              /*  DuAn duAnUpdate = duAnList.get(spn_duAn.getId());
                 Map<String, Object> updates = new HashMap<>();
                 updates.put("soLuongHienTai", duAnUpdate.getSoLuongHienTai() + cungCapHangHoa.getSoLuong());
-                duAnRef.document(duAnUpdate.getId()).update(updates);
+                duAnRef.document(duAnUpdate.getId()).update(updates);*/
 
             }
 

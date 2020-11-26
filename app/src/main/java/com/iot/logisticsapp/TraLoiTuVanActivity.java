@@ -120,8 +120,7 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
                         TraLoiTuVan traLoiTuVan = documentSnapshot.toObject(TraLoiTuVan.class);
 
 
-                        if (traLoiTuVan.getUserId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                && traLoiTuVan.getCauTraLoiID().equals(cauHoiId)) {
+                        if (traLoiTuVan.getCauTraLoiID().equals(cauHoiId)) {
                             traLoiTuVanList.add(traLoiTuVan);
                             traLoiTuVanAdapter.notifyDataSetChanged();
 

@@ -21,29 +21,12 @@ public class CungCapHangHoa {
     List<String> chiTietTinhTrang;
 
     public String khoID;
+
     public double kinhDo;
     public double viDo;
 
-    public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianGuiHang, String tenItem, String tenLoaiItem, int soLuong
-            , String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String khoID, double kinhDo, double viDo, List<String> chiTietTinhTrang) {
-        this.userID = userID;
-        this.tenUser = tenUser;
-        this.sdtUser = sdtUser;
-        this.diachiUser = diachiUser;
-        this.thoiGianGuiHang = thoiGianGuiHang;
-        this.tenItem = tenItem;
-        this.tenLoaiItem = tenLoaiItem;
-        this.soLuong = soLuong;
-        this.diaChiCCC = diaChiCCC;
-        this.loaiHinhVanChuyen = loaiHinhVanChuyen;
-        this.tinhTrangVanChuyen = tinhTrangVanChuyen;
-        this.khoID = khoID;
-        this.kinhDo = kinhDo;
-        this.viDo = viDo;
-        this.chiTietTinhTrang = chiTietTinhTrang;
-    }
-
-    public CungCapHangHoa(String cungCapHangHoaID, String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianGuiHang, String tenItem, String tenLoaiItem, int soLuong, String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String duAnId, List<String> chiTietTinhTrang, String khoID, double kinhDo, double viDo) {
+    public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianGuiHang, String tenItem, String tenLoaiItem,
+                          int soLuong, String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, List<String> chiTietTinhTrang, String khoID, double kinhDo, double viDo) {
         this.cungCapHangHoaID = cungCapHangHoaID;
         this.userID = userID;
         this.tenUser = tenUser;
@@ -63,6 +46,9 @@ public class CungCapHangHoa {
         this.viDo = viDo;
     }
 
+    public CungCapHangHoa() {
+    }
+
     public String getDuAnId() {
         return duAnId;
     }
@@ -71,8 +57,7 @@ public class CungCapHangHoa {
         this.duAnId = duAnId;
     }
 
-    public CungCapHangHoa() {
-    }
+
 
     public String getCungCapHangHoaID() {
         return cungCapHangHoaID;

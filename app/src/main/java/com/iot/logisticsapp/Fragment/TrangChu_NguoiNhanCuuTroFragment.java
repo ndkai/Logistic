@@ -94,7 +94,6 @@ public class TrangChu_NguoiNhanCuuTroFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spn_vande_cangiupdo.setAdapter(adapter);
 
-        String arr[] = {"Giáo dục", "Y tế", "Nơi cư trú", "Nhu yếu phẩm"};
 
         spn_vande_cangiupdo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
@@ -245,7 +244,7 @@ public class TrangChu_NguoiNhanCuuTroFragment extends Fragment {
         List<String> theoDoiYeuCau = Arrays.asList(theoDoiYeuCauArray);
 
         NguoiNhanCuuTro nguoiNhanCuuTro = new NguoiNhanCuuTro(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diaChiUser,nhuCau,nhuCauCuThe
-                    ,chiTietTinhTrang,"Đang Xử Lý","","",Double.parseDouble(tv_kinhdo.getText().toString()),Double.parseDouble(tv_vido.getText().toString()),theoDoiYeuCau, "Thông Thườngc");
+                    ,chiTietTinhTrang,"Đang Xử Lý","","",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()),theoDoiYeuCau, "Thông Thườngc");
             nguoiNhanCuuTroRef.add(nguoiNhanCuuTro).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentReference> task) {

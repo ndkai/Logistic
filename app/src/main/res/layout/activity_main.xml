@@ -5,144 +5,162 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:orientation="vertical">
 
       <TextView
+          android:background="#ED1F77"
+          android:textColor="#FFFFFF"
+          android:gravity="center"
           android:textStyle="bold"
           android:layout_gravity="center"
           android:textSize="30sp"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:layout_height="60dp"
           android:text="Người cứu trợ" />
-      <LinearLayout
-          android:weightSum="3"
-          android:layout_marginTop="40dp"
-          android:orientation="horizontal"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Tên"
-             android:textStyle="bold"
-             android:textSize="20sp"/>
-         <TextView
-             android:id="@+id/tv_tenUser"
-             android:layout_marginLeft="50dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Tên : "
-             android:textStyle="bold"
-             android:textSize="20sp"/>
-      </LinearLayout>
-      <LinearLayout
-          android:layout_marginTop="10dp"
-          android:orientation="horizontal"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="SĐT : "
-             android:textStyle="bold"
-             android:textSize="20sp"/>
-         <TextView
-             android:id="@+id/tv_sđtUser"
-             android:layout_marginLeft="50dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="sô dien thoai"
-             android:textStyle="bold"
-             android:textSize="20sp"/>
-      </LinearLayout>
-      <LinearLayout
-          android:layout_marginTop="10dp"
-          android:orientation="horizontal"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content">
-         <TextView
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Địa chỉ : "
-             android:textStyle="bold"
-             android:textSize="20sp"/>
-         <TextView
-             android:id="@+id/tv_diachiUser"
-             android:layout_marginLeft="50dp"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Địa chỉ"
-             android:textStyle="bold"
-             android:textSize="20sp"/>
-      </LinearLayout>
-      <TextView
-          android:textStyle="bold"
-          android:textSize="20sp"
-          android:layout_marginTop="20dp"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:text="Loại hình cứu trợ"/>
-
-
-     <CheckBox
-         android:checked="true"
-         android:id="@+id/cb_CCHH"
-         android:text="Cung cấp hàng hóa"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"/>
-      <CheckBox
-          android:id="@+id/cb_CCDVVT"
-          android:text="Cung cấp dịch vụ vận tải"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"/>
-    <CheckBox
-        android:id="@+id/cb_CCK"
-        android:text="Cung cấp kho"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <CheckBox
-        android:id="@+id/cb_DanhSachDuAn"
-        android:text="Danh Sách Dự Án"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <CheckBox
-        android:id="@+id/cb_tuVan"
-        android:text="Tư Vấn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-      <Button
-          android:layout_marginTop="20dp"
-          android:layout_gravity="center"
-          android:text="Tiếp Theo"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-         android:onClick="Next"/>
-
-    <TextView
-        android:id="@+id/tv_chuyenVaiTro_main"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Chuyển Sang Người Cần Cứu Trợ"/>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:padding="50dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:weightSum="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tv_tenUser"
+                    android:layout_marginLeft="70dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SĐT : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tv_sđtUser"
+                    android:layout_marginLeft="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sô dien thoai"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ : "
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/tv_diachiUser"
+                    android:layout_marginLeft="26dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa chỉ"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <TextView
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loại hình cứu trợ"/>
 
-    <TextView
-        android:id="@+id/tv_Logout"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Đăng Xuất"/>
+            <CheckBox
+                android:checked="true"
+                android:id="@+id/cb_CCHH"
+                android:text="Cung cấp hàng hóa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/cb_CCDVVT"
+                android:text="Cung cấp dịch vụ vận tải"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <CheckBox
+                android:id="@+id/cb_CCK"
+                android:text="Cung cấp kho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cb_DanhSachDuAn"
+                android:text="Danh Sách Dự Án"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <CheckBox
+                android:id="@+id/cb_tuVan"
+                android:text="Tư Vấn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:textColor="#fff"
+                android:background="#ED1F77"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="50dp"
+                android:onClick="Next"
+                android:text="Tiếp Theo" />
+
+            <TextView
+                android:id="@+id/tv_chuyenVaiTro_main"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="17sp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chuyển Sang Người Cần Cứu Trợ"/>
+
+            <TextView
+                android:id="@+id/tv_Logout"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng Xuất"/>
+        </LinearLayout>
+
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
 
 
 </LinearLayout>

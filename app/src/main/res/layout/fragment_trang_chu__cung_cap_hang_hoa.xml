@@ -10,15 +10,16 @@
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground">
+        android:background="#ED1F77">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground">
+            android:background="#ED1F77">
 
             <TextView
+                android:textColor="#fff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -28,7 +29,7 @@
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-    l
+
 
     <LinearLayout
         android:id="@+id/linear"
@@ -42,17 +43,19 @@
         android:orientation="horizontal">
 
         <Button
+            android:textColor="#ED1F77"
             android:id="@+id/tv_tuMangDenCCC"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#00BCD4"
+            android:background="@drawable/button_background"
             android:gravity="center"
             android:text="Tự vận chuyển"
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <Button
+            android:textColor="#4C4B4B"
             android:id="@+id/tv_cccDenLay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -79,7 +82,9 @@
             android:padding="15dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:background="#EC265D"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thông Tin Người Ủng Hộ"
                 android:textSize="20sp"
@@ -191,7 +196,9 @@
 
 
             <TextView
-                android:layout_width="match_parent"
+                android:background="#EC265D"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Thông Tin Hàng Hóa "
@@ -295,7 +302,9 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:background="#EC265D"
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:text="Thông Tin Vận Chuyển"
@@ -351,12 +360,15 @@
             </LinearLayout>
 
             <Button
+                android:textSize="16sp"
                 android:id="@+id/btn_xacnhan"
-                android:layout_width="wrap_content"
+                android:layout_width="141dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:text="Xác Nhận" />
+                android:background="#ED1F77"
+                android:text="Xác Nhận"
+                android:textColor="#fff" />
 
             <TextView
                 android:id="@+id/tv_loaiHinhVanChuyen"

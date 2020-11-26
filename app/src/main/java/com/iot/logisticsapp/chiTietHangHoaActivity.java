@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,7 +59,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
 
 
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+       /* Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Chi tiết hàng hóa");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -69,7 +68,7 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 finish();
             }
-        });
+        });*/
 
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);

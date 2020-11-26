@@ -23,7 +23,7 @@
                 android:textSize="30sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Yêu Cầu Cứu Trợ" />
+                android:text="Cập Nhật Thông Tin Cứu Trợ" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

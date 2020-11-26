@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".chiTietHangHoaActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,10 +16,20 @@
             android:layout_width="match_parent"
             android:id="@+id/toolbar"
             android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground">
+            android:background="#ED1F77">
+            <TextView
+                android:textColor="#fff"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chi Tiết Hàng Hóa" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <TextView
         android:layout_margin="10dp"
@@ -62,7 +73,7 @@
     <LinearLayout
         android:layout_margin="10dp"
         android:layout_gravity="center"
-        android:background="@drawable/background_chitiet_tinhtrang"
+        android:background="@drawable/button_background"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
