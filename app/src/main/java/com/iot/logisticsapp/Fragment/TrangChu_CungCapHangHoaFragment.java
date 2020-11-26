@@ -204,7 +204,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                     for (QueryDocumentSnapshot documentSnapshot : value) {
                         DuAn duAn = documentSnapshot.toObject(DuAn.class);
                         duAn.setId(documentSnapshot.getId());
-                        duAnRef.document(duAn.getId()).update("Id", duAn.getId());
+                        duAnRef.document(duAn.getId()).update("id", duAn.getId());
                         duAnStringList.add(duAn.getTen());
                         duAnList.add(duAn);
                     }

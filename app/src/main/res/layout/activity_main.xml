@@ -123,7 +123,7 @@
          android:onClick="Next"/>
 
     <TextView
-        android:id="@+id/tv_chuyenVaiTro"
+        android:id="@+id/tv_chuyenVaiTro_main"
         android:gravity="center"
         android:layout_gravity="center"
         android:textStyle="bold"

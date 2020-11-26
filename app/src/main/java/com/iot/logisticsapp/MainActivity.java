@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         tv_Logout = findViewById(R.id.tv_Logout);
         tv_sđtUser = findViewById(R.id.tv_sđtUser);
         tv_diachiUser = findViewById(R.id.tv_diachiUser);
-        tv_chuyenVaiTro = findViewById(R.id.tv_chuyenVaiTro);
+        tv_chuyenVaiTro = findViewById(R.id.tv_chuyenVaiTro_main);
         cb_CCHH = findViewById(R.id.cb_CCHH);
 
         cb_CCDVVT = findViewById(R.id.cb_CCDVVT);

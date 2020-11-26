@@ -123,14 +123,14 @@ public class RealTimeMap extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void initMarkerIcons() {
-        goodBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.nct, "Hàng hóa lạnh");
+        goodBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.nct, "Hàng hóa");
         good2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.nct, "Hàng hóa");
-        personBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.cct, "Người YC 2");
+        personBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.cct, "Người YC");
         person2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.cct, "Người YC");
-        wareHouseBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.kho, "Kho lạnh");
+        wareHouseBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.kho, "Kho");
         wareHouse2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.kho, "Kho");
-        truckBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.ptvt, "Xe lạnh");
-        truck2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.ptvt, "Xe");
+        truckBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.truck1, "Xe");
+        truck2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.truck1, "Xe");
     }
 
     private void addMarker(Bitmap bitmap, LatLng location) {

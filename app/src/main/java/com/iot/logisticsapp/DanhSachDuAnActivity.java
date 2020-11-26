@@ -2,6 +2,7 @@ package com.iot.logisticsapp;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -16,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.iot.logisticsapp.Adapter.tinhTrangHangHoaAdapter;
+import com.iot.logisticsapp.Adapter.duAnAdapter;
 import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.Model.DuAn;
 
@@ -38,13 +39,26 @@ public class DanhSachDuAnActivity extends AppCompatActivity {
     int tongGiaTriTatCa = 0;
     List<DuAn> duAnList;
     List<CungCapHangHoa> cungCapHangHoaList;
+    List<Integer> soLuongThamGiaList;
+    duAnAdapter duAnAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_sach_du_an);
+
+        recyclerView = findViewById(R.id.recycle_view);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
         duAnList = new ArrayList<>();
         cungCapHangHoaList = new ArrayList<>();
+        soLuongThamGiaList = new ArrayList<>();
+
+        duAnAdapter = new duAnAdapter(this, duAnList, soLuongThamGiaList);
+        recyclerView.setAdapter(duAnAdapter);
+
         tv_gtcn = findViewById(R.id.tv_quyenGopCaNhan);
         tv_gttc = findViewById(R.id.tv_quyenGopTatCa);
     }
@@ -86,7 +100,9 @@ public class DanhSachDuAnActivity extends AppCompatActivity {
                 }
                 if (!value.isEmpty()) {
                     duAnList.clear();
+                    soLuongThamGiaList.clear();
                     for (QueryDocumentSnapshot documentSnapshot : value) {
+                        soLuongThamGiaList.add(0);
                         DuAn duAn = documentSnapshot.toObject(DuAn.class);
                         duAn.setId(documentSnapshot.getId());
                         duAnRef.document(duAn.getId()).update("Id", duAn.getId());
@@ -94,9 +110,12 @@ public class DanhSachDuAnActivity extends AppCompatActivity {
                         for (CungCapHangHoa cungCapHangHoa : cungCapHangHoaList) {
                             if (cungCapHangHoa.getDuAnId().equals(duAn.getId())) {
                                 tongGiaTriCaNhan += cungCapHangHoa.getSoLuong();
+                                soLuongThamGiaList.set(soLuongThamGiaList.size() - 1, cungCapHangHoa.getSoLuong());
                             }
                         }
+                        duAnList.add(duAn);
                     }
+                    duAnAdapter.notifyDataSetChanged();
                     tv_gttc.setText(tongGiaTriTatCa + "");
                     tv_gtcn.setText(tongGiaTriCaNhan + "");
                 }
