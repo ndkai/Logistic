@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TraLoiTuVanActivity"></activity>
         <activity android:name=".ChiTietTuVanActivity" />
         <activity android:name=".TuVanActivity" />
         <activity

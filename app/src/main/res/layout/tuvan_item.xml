@@ -2,12 +2,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:orientation="vertical"
-    android:padding="8dp"
+    android:padding="10dp"
     android:layout_margin="10dp"
     android:background="@drawable/background_chitiet_tinhtrang">
 
     <TextView
+        android:layout_marginLeft="15dp"
         android:textSize="18sp"
         android:textStyle="bold"
         android:text="Ten User"
@@ -15,13 +17,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/tenUser"/>
     <TextView
-        android:textSize="13sp"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="15sp"
         android:text="Ten User"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sdtUser"/>
     <TextView
-        android:textSize="13sp"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="15dp"
+        android:textSize="15sp"
         android:text="Ten User"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.iot.logisticsapp;
+package com.iot.logisticsapp.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,14 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.iot.logisticsapp.Model.TuVan;
+import com.iot.logisticsapp.Model.TraLoiTuVan;
+import com.iot.logisticsapp.R;
 
 import java.util.List;
 
-public class tuVanAdapter  extends RecyclerView.Adapter<tuVanAdapter.ViewHolder> {
+public class traLoiTuVanAdapter extends RecyclerView.Adapter<traLoiTuVanAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<TuVan> mTuVan;
+    private List<TraLoiTuVan> mTraLoiTuVan;
 
 
 
@@ -26,27 +27,25 @@ public class tuVanAdapter  extends RecyclerView.Adapter<tuVanAdapter.ViewHolder>
 
 
 
-    public tuVanAdapter(Context mContext, List<TuVan> mTuVan) {
+    public traLoiTuVanAdapter(Context mContext, List<TraLoiTuVan> mTraLoiTuVan) {
         this.mContext = mContext;
-        this.mTuVan = mTuVan;
+        this.mTraLoiTuVan = mTraLoiTuVan;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.tuvan_item,parent,false);
-        return new tuVanAdapter.ViewHolder(view);
+        return new traLoiTuVanAdapter.ViewHolder(view);
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        final TuVan tuVan = mTuVan.get(position);
-
-        holder.tenUser.setText(tuVan.getTenUser());
-        holder.sdtUser.setText("SĐT : " + tuVan.getSdtUser());
-        holder.cauHoi.setText("Câu Hỏi : "+tuVan.getCauHoi());
-
+        final TraLoiTuVan traLoiTuVan = mTraLoiTuVan.get(position);
+        holder.tenUser.setText(traLoiTuVan.getTenUser());
+        holder.sdtUser.setVisibility(View.GONE);
+        holder.cauHoi.setText("Trả Lời : "+traLoiTuVan.getCauTraLoi());
 
     }
 
@@ -54,7 +53,7 @@ public class tuVanAdapter  extends RecyclerView.Adapter<tuVanAdapter.ViewHolder>
 
     @Override
     public int getItemCount() {
-        return mTuVan.size();
+        return mTraLoiTuVan.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

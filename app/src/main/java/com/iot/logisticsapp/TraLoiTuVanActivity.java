@@ -25,39 +25,46 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.iot.logisticsapp.Adapter.tuVanAdapter;
-import com.iot.logisticsapp.Model.TuVan;
+import com.iot.logisticsapp.Adapter.traLoiTuVanAdapter;
+import com.iot.logisticsapp.Model.TraLoiTuVan;
 import com.iot.logisticsapp.Model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChiTietTuVanActivity extends AppCompatActivity {
-
+public class TraLoiTuVanActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    private com.iot.logisticsapp.Adapter.tuVanAdapter tuVanAdapter;
-    private List<TuVan> tuVanList;
+    private traLoiTuVanAdapter traLoiTuVanAdapter;
+    private List<TraLoiTuVan> traLoiTuVanList;
 
     public static EditText add_cauHoi;
     public static TextView gui;
 
+    String cauHoiId;
+    String tenUser;
+    TextView tenNguoiDatCauHoi, sdtNguoiDatCauHoi, cauHoiNguoiDatCauHoi;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String tenUser, sdtUser;
-
-    String chuDe, vaiTro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chi_tiet_tu_van);
+        setContentView(R.layout.activity_tra_loi_tu_van);
+
+        tenNguoiDatCauHoi = findViewById(R.id.tenNguoiDatCauHoi);
+        sdtNguoiDatCauHoi = findViewById(R.id.sdtNguoiDatCauHoi);
+        cauHoiNguoiDatCauHoi = findViewById(R.id.cauHoiNguoiDatCauHoi);
 
         Intent intent = getIntent();
-        chuDe = intent.getStringExtra("ChuDe");
-        vaiTro = intent.getStringExtra("vaiTro");
+        cauHoiId = intent.getStringExtra("CauHoiID");
+        tenNguoiDatCauHoi.setText(intent.getStringExtra("tenNguoiDatCauHoi"));
+        sdtNguoiDatCauHoi.setText(intent.getStringExtra("sdtNguoiDatCauHoi"));
+        cauHoiNguoiDatCauHoi.setText("Câu Hỏi : " + intent.getStringExtra("cauHoiNguoiDatCauHoi"));
+
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(chuDe);
+        getSupportActionBar().setTitle("Trả Lời");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,20 +79,19 @@ public class ChiTietTuVanActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        tuVanList = new ArrayList<>();
-        tuVanAdapter = new tuVanAdapter(this,tuVanList);
-        recyclerView.setAdapter(tuVanAdapter);
+        traLoiTuVanList = new ArrayList<>();
+        traLoiTuVanAdapter = new traLoiTuVanAdapter(this,traLoiTuVanList);
+        recyclerView.setAdapter(traLoiTuVanAdapter);
 
         add_cauHoi = findViewById(R.id.add_cauHoi);
         gui = findViewById(R.id.gui);
-
 
 
         gui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(add_cauHoi.getText().toString().equals("")){
-                    Toast.makeText(ChiTietTuVanActivity.this, "Bạn Chưa Nhập Nội Dung Câu Hỏi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TraLoiTuVanActivity.this, "Bạn Chưa Nhập Nội Dung Câu Hỏi", Toast.LENGTH_SHORT).show();
                 } else {
                     noidungCauHoi();
                     add_cauHoi.setText("");
@@ -94,12 +100,7 @@ public class ChiTietTuVanActivity extends AppCompatActivity {
         });
         getUser();
 
-        if (!vaiTro.equals("Tư Vấn")){
-            add_cauHoi.setVisibility(View.VISIBLE);
-            gui.setVisibility(View.VISIBLE);
-        }
-
-        Log.d("Hao","error : ");
+        Log.d("TAG", "error : ");
 
 
     }
@@ -108,26 +109,21 @@ public class ChiTietTuVanActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        db.collection("TuVan").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("TraLoiTuVan").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){return;}
                 if (!value.isEmpty()) {
-                    tuVanList.clear();
+                    traLoiTuVanList.clear();
                     for (QueryDocumentSnapshot documentSnapshot : value){
-                        TuVan tuVan = documentSnapshot.toObject(TuVan.class);
-                        if(vaiTro.equals("Tư Vấn") &&tuVan.getChuDe().equals(chuDe)){
-                            tuVanList.add(tuVan);
-                            tuVanAdapter.notifyDataSetChanged();
-                        }else {
+                        TraLoiTuVan traLoiTuVan = documentSnapshot.toObject(TraLoiTuVan.class);
 
-                            if(tuVan.getUserID().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    &&tuVan.getChuDe().equals(chuDe)){
-                                tuVan.setCauHoiID(documentSnapshot.getId());
-                                db.collection("TuVan").document(tuVan.getCauHoiID()).update("cauHoiID",tuVan.getCauHoiID());
-                                tuVanList.add(tuVan);
-                                tuVanAdapter.notifyDataSetChanged();
-                            }
+
+                            if(traLoiTuVan.getUserId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                    &&traLoiTuVan.getCauTraLoiID().equals(cauHoiId)){
+                                traLoiTuVanList.add(traLoiTuVan);
+                                traLoiTuVanAdapter.notifyDataSetChanged();
+
                         }
 
                     }
@@ -140,14 +136,12 @@ public class ChiTietTuVanActivity extends AppCompatActivity {
     private void noidungCauHoi() {
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String cauHoi = add_cauHoi.getText().toString().trim();
-        String cauHoiID = "";
-        String chuDeCauHoi = chuDe;
-        TuVan tuVan = new TuVan(userID,cauHoi,cauHoiID,chuDeCauHoi,tenUser,sdtUser);
-        db.collection("TuVan").add(tuVan).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+        String cauTraLoi = add_cauHoi.getText().toString().trim();
+        TraLoiTuVan traLoiTuVan = new TraLoiTuVan(userID,cauTraLoi,cauHoiId,tenUser);
+        db.collection("TraLoiTuVan").add(traLoiTuVan).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
-                Toast.makeText(ChiTietTuVanActivity.this, "Đăng Câu Hỏi Thành Công", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TraLoiTuVanActivity.this, "Đăng Câu Trả Lời Thành Công", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -160,7 +154,6 @@ public class ChiTietTuVanActivity extends AppCompatActivity {
                 if (value.exists()) {
                     User user = value.toObject(User.class);
                     tenUser = user.getName();
-                    sdtUser = user.getPhone();
                 }
             }
         });
