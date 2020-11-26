@@ -32,7 +32,7 @@ public class Helper {
         Bitmap resized = Bitmap.createScaledBitmap(imageBitmap, Constants.markerWidth, Constants.markerHeight, true);
 
 // modify canvas
-        canvas1.drawBitmap(resized, 0, 0, color);
+        canvas1.drawBitmap(resized, 40, 40, color);
         canvas1.drawText(text, 30, 40, color);
         return bmp;
 
