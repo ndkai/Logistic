@@ -17,13 +17,12 @@ public class CungCapHangHoa {
     public String diaChiCCC;
     public String loaiHinhVanChuyen;
     public String tinhTrangVanChuyen;
-
+    public String duAnId;
     List<String> chiTietTinhTrang;
 
     public String khoID;
     public double kinhDo;
     public double viDo;
-
 
     public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianGuiHang, String tenItem, String tenLoaiItem, int soLuong
             , String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String khoID, double kinhDo, double viDo, List<String> chiTietTinhTrang) {
@@ -42,6 +41,34 @@ public class CungCapHangHoa {
         this.kinhDo = kinhDo;
         this.viDo = viDo;
         this.chiTietTinhTrang = chiTietTinhTrang;
+    }
+
+    public CungCapHangHoa(String cungCapHangHoaID, String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianGuiHang, String tenItem, String tenLoaiItem, int soLuong, String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String duAnId, List<String> chiTietTinhTrang, String khoID, double kinhDo, double viDo) {
+        this.cungCapHangHoaID = cungCapHangHoaID;
+        this.userID = userID;
+        this.tenUser = tenUser;
+        this.sdtUser = sdtUser;
+        this.diachiUser = diachiUser;
+        this.thoiGianGuiHang = thoiGianGuiHang;
+        this.tenItem = tenItem;
+        this.tenLoaiItem = tenLoaiItem;
+        this.soLuong = soLuong;
+        this.diaChiCCC = diaChiCCC;
+        this.loaiHinhVanChuyen = loaiHinhVanChuyen;
+        this.tinhTrangVanChuyen = tinhTrangVanChuyen;
+        this.duAnId = duAnId;
+        this.chiTietTinhTrang = chiTietTinhTrang;
+        this.khoID = khoID;
+        this.kinhDo = kinhDo;
+        this.viDo = viDo;
+    }
+
+    public String getDuAnId() {
+        return duAnId;
+    }
+
+    public void setDuAnId(String duAnId) {
+        this.duAnId = duAnId;
     }
 
     public CungCapHangHoa() {
