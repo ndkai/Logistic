@@ -257,11 +257,13 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <Spinner
-                    android:id="@+id/spn_duAn"
+                <EditText
+                    android:id="@+id/tv_khoiLuongHang"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:spinnerMode="dropdown" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -278,14 +280,13 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/tv_khoiLuongHang"
+                <Spinner
+                    android:id="@+id/spn_duAn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent"
+                    android:spinnerMode="dropdown" />
             </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/ln_tuMangDenCCC"
