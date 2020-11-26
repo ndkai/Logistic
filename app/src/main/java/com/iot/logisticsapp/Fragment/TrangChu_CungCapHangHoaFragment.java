@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,9 @@ import com.iot.logisticsapp.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class TrangChu_CungCapHangHoaFragment extends Fragment {
@@ -59,7 +62,6 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
     private CollectionReference duAnRef = db.collection("DuAn");
     private List<DuAn> duAnList;
     private List<String> duAnStringList;
-    int duAnIndex = 0;
     CheckBox cb_xacnhanDiaChi;
     ArrayAdapter<String> duAnAdapter;
 
@@ -259,9 +261,18 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                 tv_tenHang.setText("");
                 tv_khoiLuongHang.setText("");
                 tv_viTriKho.setText("");
+
+                // update soLuong DuAn
+                DuAn duAnUpdate = duAnList.get(spn_duAn.getId());
+                Map<String, Object> updates = new HashMap<>();
+                updates.put("soLuongHienTai", duAnUpdate.getSoLuongHienTai() + cungCapHangHoa.getSoLuong());
+                duAnRef.document(duAnUpdate.getId()).update(updates);
+
             }
+
         });
-        ;
+
+
     }
 
 
