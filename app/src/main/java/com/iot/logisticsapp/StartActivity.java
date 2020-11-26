@@ -20,11 +20,10 @@ public class StartActivity extends AppCompatActivity {
         super.onStart();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(firebaseUser!=null){
-            startActivity(new Intent(StartActivity.this,MainActivity.class));
+        if (firebaseUser != null) {
+            startActivity(new Intent(StartActivity.this, MainActivity.class));
             finish();
         }
-
 
 
     }
@@ -40,14 +39,14 @@ public class StartActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this,LoginActivity.class));
+                startActivity(new Intent(StartActivity.this, LoginActivity.class));
             }
         });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this,RegisterActivity.class));
+                startActivity(new Intent(StartActivity.this, RegisterActivity.class));
 
             }
         });
