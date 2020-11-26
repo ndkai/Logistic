@@ -254,7 +254,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
 
        CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,
                thoiGianDuKien,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen
-               ,"123",chiTietTinhTrang,"123",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()));
+               ,"Đang Xử Lý",chiTietTinhTrang,"123",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()));
     //    cungCapHangHoa.setDuAnId(duAnList.get(spn_duAn.getId()).getId());
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
