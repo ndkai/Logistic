@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
     LinearLayout ln_tuMangDenCCC;
     Spinner spn_loaiHang;
     Spinner spn_duAn;
-    String arr[] = {"Thông Thường", "Đặc Biệt"};
+    String arr[] = {"Công cụ sản xuất","Nhu yếu phẩm"};
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());

@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro, tv_Logout;
-    CheckBox cb_CCHH, cb_CCDVVT, cb_CCK, cb_tuVan;
+    CheckBox cb_CCHH, cb_CCDVVT, cb_CCK, cb_tuVan, cb_DanhSachDuAn;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         cb_CCDVVT = findViewById(R.id.cb_CCDVVT);
         cb_CCK = findViewById(R.id.cb_CCK);
         cb_tuVan = findViewById(R.id.cb_tuVan);
+        cb_DanhSachDuAn = findViewById(R.id.cb_DanhSachDuAn);
 
         onClick();
 
@@ -140,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 cb_CCDVVT.setChecked(false);
                 cb_CCK.setChecked(false);
                 cb_tuVan.setChecked(false);
+                cb_DanhSachDuAn.setChecked(false);
             }
         });
         cb_CCDVVT.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 cb_CCHH.setChecked(false);
                 cb_CCK.setChecked(false);
                 cb_tuVan.setChecked(false);
+                cb_DanhSachDuAn.setChecked(false);
             }
         });
         cb_CCK.setOnClickListener(new View.OnClickListener() {
@@ -156,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 cb_CCHH.setChecked(false);
                 cb_CCDVVT.setChecked(false);
                 cb_tuVan.setChecked(false);
+                cb_DanhSachDuAn.setChecked(false);
             }
         });
         cb_tuVan.setOnClickListener(new View.OnClickListener() {
@@ -164,8 +168,19 @@ public class MainActivity extends AppCompatActivity {
                 cb_CCHH.setChecked(false);
                 cb_CCDVVT.setChecked(false);
                 cb_CCK.setChecked(false);
+                cb_DanhSachDuAn.setChecked(false);
             }
         });
+        cb_DanhSachDuAn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cb_CCHH.setChecked(false);
+                cb_CCDVVT.setChecked(false);
+                cb_CCK.setChecked(false);
+                cb_tuVan.setChecked(false);
+            }
+        });
+
         tv_chuyenVaiTro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -189,6 +204,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(), CungCapVanTaiActivity.class));
         } else if (cb_tuVan.isChecked()) {
             startActivity(new Intent(getApplicationContext(), TuVanActivity.class));
+        } else if (cb_DanhSachDuAn.isChecked()) {
+            startActivity(new Intent(getApplicationContext(), DanhSachDuAnActivity.class));
         } else startActivity(new Intent(getApplicationContext(), KhoActivity.class));
     }
 }

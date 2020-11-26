@@ -103,6 +103,12 @@
         android:layout_height="wrap_content"/>
 
     <CheckBox
+        android:id="@+id/cb_DanhSachDuAn"
+        android:text="Danh Sách Dự Án"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <CheckBox
         android:id="@+id/cb_tuVan"
         android:text="Tư Vấn"
         android:layout_width="wrap_content"
