@@ -11,7 +11,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.firestore.CollectionReference;
@@ -121,21 +123,24 @@ public class RealTimeMap extends AppCompatActivity implements OnMapReadyCallback
     }
 
     private void initMarkerIcons() {
-        goodBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.goods, "Hàng hóa lạnh");
-        good2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.goods2, "Hàng hóa");
-        personBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.person, "Người YC 2");
-        person2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.person2, "Người YC");
-        wareHouseBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.warehouse, "Kho lạnh");
-        wareHouse2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.warehouse2, "Kho");
-        truckBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.truck, "Xe lạnh");
-        truck2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.truck2, "Xe");
+        goodBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.nct, "Hàng hóa lạnh");
+        good2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.nct, "Hàng hóa");
+        personBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.cct, "Người YC 2");
+        person2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.cct, "Người YC");
+        wareHouseBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.kho, "Kho lạnh");
+        wareHouse2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.kho, "Kho");
+        truckBitmap = Helper.convertIconRawToMaker(getResources(), R.raw.ptvt, "Xe lạnh");
+        truck2Bitmap = Helper.convertIconRawToMaker(getResources(), R.raw.ptvt, "Xe");
     }
 
     private void addMarker(Bitmap bitmap, LatLng location) {
+//        BitmapDescriptor bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(bitmap);
+//        map.addGroundOverlay(new GroundOverlayOptions()
+//                .image(bitmapDescriptor)
+//                .position(location, 100));
         map.addMarker(new MarkerOptions()
                 .position(location)
                 .icon(BitmapDescriptorFactory.fromBitmap(bitmap))
-//                 Specifies the anchor to be at a particular point in the marker image.
                 .anchor(0.5f, 1));
     }
 

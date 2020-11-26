@@ -17,7 +17,7 @@ public class DiaChiUserMapActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_PERMISSION = 2;
     Button btnShowlocation;
     String mPermission = Manifest.permission.ACCESS_FINE_LOCATION;
-    Location_Tracker gps;
+//    Location_Tracker gps;
 
     double la, longi;
     @Override
