@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -45,14 +46,18 @@ import java.util.List;
 
 public class TrangChu_CungCapHangHoaFragment extends Fragment {
 
-    EditText tv_tenUser, tv_sđtUser, tv_diachiUser, tv_tenHang, tv_khoiLuongHang, tv_thoiGianDuKien, tv_viTriKho, tv_kinhdo, tv_vido;
+    EditText tv_tenUser, tv_sđtUser, tv_diachiUser, /*tv_tenHang,*/ tv_khoiLuongHang, tv_thoiGianDuKien, tv_viTriKho, tv_kinhdo, tv_vido;
     TextView tv_loaiHinhVanChuyen;
     Button tv_tuMangDenCCC, tv_cccDenLay;
     Button btn_xacnhan;
     LinearLayout ln_tuMangDenCCC;
-    Spinner spn_loaiHang;
+    Spinner spn_loaiHang, spn_GiaoDuc ,spn_Yte , spn_NoiCuTru, spn_NhuYeuPham;
     Spinner spn_duAn;
-    String arr[] = {"Công cụ sản xuất","Nhu yếu phẩm"};
+    String arr[] = {"Giáo dục", "Y tế", "Nơi cư trú", "Nhu yếu phẩm"};
+    String arr_giaoduc[] = {"Học Phí", "Tiếp cận dịch vụ", "Định hướng"};
+    String arr_yte[] = {"Chi Phí", "Tiếp cận dịch vụ", "Vật tư", "Nhân lực"};
+    String arr_noicutru[] = {"Tạm Thời", "Dài hạn"};
+    String arr4_nhuyeupham[] = {"Nước", "Dinh dưỡng", "Vệ sinh", "Thuốc men"};
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -75,7 +80,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         tv_sđtUser = view.findViewById(R.id.tv_sđtUser);
         tv_diachiUser = view.findViewById(R.id.tv_diachiUser);
         spn_loaiHang = view.findViewById(R.id.spn_loaiHang);
-        tv_tenHang = view.findViewById(R.id.tv_tenHang);
+      //  tv_tenHang = view.findViewById(R.id.tv_tenHang);
         tv_khoiLuongHang = view.findViewById(R.id.tv_khoiLuongHang);
         tv_thoiGianDuKien = view.findViewById(R.id.tv_thoiGianDuKien);
         tv_viTriKho = view.findViewById(R.id.tv_viTriKho);
@@ -89,6 +94,12 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         tv_vido = view.findViewById(R.id.tv_vido);
         cb_xacnhanDiaChi = view.findViewById(R.id.cb_xacnhanDiaChi);
         spn_duAn = view.findViewById(R.id.spn_duAn);
+
+        spn_GiaoDuc = view.findViewById(R.id.spn_GiaoDuc);
+        spn_Yte = view.findViewById(R.id.spn_Yte);
+        spn_NoiCuTru = view.findViewById(R.id.spn_NoiCuTru);
+        spn_NhuYeuPham = view.findViewById(R.id.spn_NhuYeuPham);
+
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
@@ -106,6 +117,52 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
             }
         });
 
+        spn_loaiHang.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                String selectedItem = parent.getItemAtPosition(position).toString();
+                if(selectedItem.equals("Giáo dục"))
+                {
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_giaoduc);
+                    adapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+                    spn_GiaoDuc.setAdapter(adapter1);
+                    spn_GiaoDuc.setVisibility(View.VISIBLE);
+                    spn_NhuYeuPham.setVisibility(View.GONE);
+                    spn_NoiCuTru.setVisibility(View.GONE);
+                    spn_Yte.setVisibility(View.GONE);
+                } else  if(selectedItem.equals("Y tế")) {
+                    spn_GiaoDuc.setVisibility(View.GONE);
+                    spn_NhuYeuPham.setVisibility(View.GONE);
+                    spn_NoiCuTru.setVisibility(View.GONE);
+                    spn_Yte.setVisibility(View.VISIBLE);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_yte);
+                    adapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+                    spn_Yte.setAdapter(adapter1);
+                }else  if(selectedItem.equals("Nơi cư trú")) {
+                    spn_GiaoDuc.setVisibility(View.GONE);
+                    spn_NhuYeuPham.setVisibility(View.GONE);
+                    spn_NoiCuTru.setVisibility(View.VISIBLE);
+                    spn_Yte.setVisibility(View.GONE);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_noicutru);
+                    adapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+                    spn_NoiCuTru.setAdapter(adapter1);
+                } else {
+                    spn_GiaoDuc.setVisibility(View.GONE);
+                    spn_NhuYeuPham.setVisibility(View.VISIBLE);
+                    spn_NoiCuTru.setVisibility(View.GONE);
+                    spn_Yte.setVisibility(View.GONE);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr4_nhuyeupham);
+                    adapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+                    spn_NhuYeuPham.setAdapter(adapter1);
+                }
+            } // to close the onItemSelected
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
 
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,18 +170,34 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
 
                 if (tv_loaiHinhVanChuyen.getText().toString().equals("Tự Vận Chuyển")) {
                     if (!cb_xacnhanDiaChi.isChecked() || tv_tenUser.getText().toString().equals("") || tv_sđtUser.getText().toString().equals("") || tv_diachiUser.getText().toString().equals("") ||
-                            tv_tenHang.getText().toString().equals("") || tv_khoiLuongHang.getText().toString().equals("") || tv_thoiGianDuKien.getText().toString().equals("") ||
+                         /*   tv_tenHang.getText().toString().equals("") ||*/ tv_khoiLuongHang.getText().toString().equals("") || tv_thoiGianDuKien.getText().toString().equals("") ||
                             tv_viTriKho.getText().toString().equals("")) {
                         Toast.makeText(getContext(), "Vui Lòng Điền Đủ Thông Tin", Toast.LENGTH_SHORT).show();
                     } else {
-                        addSave();
+                        if(spn_loaiHang.getSelectedItem().toString().equals("Giáo dục")){
+                            addSave(spn_GiaoDuc.getSelectedItem().toString().trim());
+                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Y tế")){
+                            addSave(spn_Yte.getSelectedItem().toString().trim());
+                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Nơi cư trú")){
+                            addSave(spn_NoiCuTru.getSelectedItem().toString().trim());
+                        } else {
+                            addSave(spn_NhuYeuPham.getSelectedItem().toString().trim());
+                        }
                     }
                 } else {
                     if (!cb_xacnhanDiaChi.isChecked() || tv_tenUser.getText().toString().equals("") || tv_sđtUser.getText().toString().equals("") || tv_diachiUser.getText().toString().equals("") ||
-                            tv_tenHang.getText().toString().equals("") || tv_khoiLuongHang.getText().toString().equals("")) {
+                          /*  tv_tenHang.getText().toString().equals("") || */tv_khoiLuongHang.getText().toString().equals("")) {
                         Toast.makeText(getContext(), "Vui Lòng Điền Đủ Thông Tin", Toast.LENGTH_SHORT).show();
                     } else {
-                        addSave();
+                        if(spn_loaiHang.getSelectedItem().toString().equals("Giáo dục")){
+                            addSave(spn_GiaoDuc.getSelectedItem().toString().trim());
+                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Y tế")){
+                            addSave(spn_Yte.getSelectedItem().toString().trim());
+                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Nơi cư trú")){
+                            addSave(spn_NoiCuTru.getSelectedItem().toString().trim());
+                        } else {
+                            addSave(spn_NhuYeuPham.getSelectedItem().toString().trim());
+                        }
                     }
                 }
                 Log.d("tag","e : ");
@@ -243,12 +316,12 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         }
     }
 
-    public void addSave() {
+    public void addSave(String cungCapCuThe) {
         String tenUser = tv_tenUser.getText().toString();
         String sdtUser = tv_sđtUser.getText().toString();
         String diachiUser = tv_diachiUser.getText().toString();
         String thoiGianDuKien = tv_thoiGianDuKien.getText().toString();
-        String tenItem = tv_tenHang.getText().toString();
+        //String tenItem = tv_tenHang.getText().toString();
         String tenLoaiItem = spn_loaiHang.getSelectedItem().toString();
         int khoiLuongItem = Integer.parseInt(tv_khoiLuongHang.getText().toString().trim());
         String diaChiCCC = tv_viTriKho.getText().toString();
@@ -260,15 +333,15 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
 
 
        CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,
-               thoiGianDuKien,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen
-               ,"Đang Xử Lý",chiTietTinhTrang,"123",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()));
+               thoiGianDuKien,cungCapCuThe,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen
+               ,"Đang Xử Lý",chiTietTinhTrang,"67Nzk5ohqY32oBYwRkS6",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()));
     //    cungCapHangHoa.setDuAnId(duAnList.get(spn_duAn.getId()).getId());
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
                 Toast.makeText(getContext(), "Cung Cấp Hàng Hóa Thành Công", Toast.LENGTH_SHORT).show();
                 tv_thoiGianDuKien.setText("");
-                tv_tenHang.setText("");
+              /*  tv_tenHang.setText("");*/
                 tv_khoiLuongHang.setText("");
                 tv_viTriKho.setText("");
 
