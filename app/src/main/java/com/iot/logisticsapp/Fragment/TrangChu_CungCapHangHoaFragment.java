@@ -217,7 +217,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
-                Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Cung Cấp Hàng Hóa Thành Công", Toast.LENGTH_SHORT).show();
                 tv_thoiGianDuKien.setText("");
                 tv_tenHang.setText("");
                 tv_khoiLuongHang.setText("");
