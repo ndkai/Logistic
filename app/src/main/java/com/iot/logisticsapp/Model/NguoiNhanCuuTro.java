@@ -25,7 +25,7 @@ public class NguoiNhanCuuTro {
 
 
     public NguoiNhanCuuTro(String userID, String tenUser, String sdtUser, String diaChiUser, String vanDe, String canGiupDo, String chiTietTinhTrang
-            , String tinhTrang, String hangHoaID, String khoID, long kinhDo, long viDo, List<String> theoDoiYeuCau, String loai) {
+            , String tinhTrang, String hangHoaID, String khoID, double kinhDo, double viDo, List<String> theoDoiYeuCau, String loai) {
         this.loai = loai;
         this.userID = userID;
         this.tenUser = tenUser;
