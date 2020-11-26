@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -40,7 +41,9 @@ import com.iot.logisticsapp.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class TrangChu_CungCapHangHoaFragment extends Fragment {
@@ -52,7 +55,8 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
     LinearLayout ln_tuMangDenCCC;
     Spinner spn_loaiHang;
     Spinner spn_duAn;
-    String arr[] = {"Công cụ sản xuất","Nhu yếu phẩm"};
+    int duAnIndex = 0;
+    String arr[] = {"Công cụ sản xuất", "Nhu yếu phẩm"};
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -127,7 +131,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                         addSave();
                     }
                 }
-                Log.d("tag","e : ");
+                Log.d("tag", "e : ");
             }
         });
 
@@ -154,7 +158,18 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                 tv_loaiHinhVanChuyen.setText("Cần Lấy Hàng");
             }
         });
+        spn_duAn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                duAnIndex = position;
 
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         return view;
 
 
@@ -185,6 +200,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                     return;
                 }
                 if (!value.isEmpty()) {
+
                     for (QueryDocumentSnapshot documentSnapshot : value) {
                         CungCapHangHoa cungCapHangHoa = documentSnapshot.toObject(CungCapHangHoa.class);
                         cungCapHangHoa.setCungCapHangHoaID(documentSnapshot.getId());
@@ -232,7 +248,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
             }
             tv_vido.setText(vido);
             tv_kinhdo.setText(kinhdo);
-            if(tv_vido.getText().toString().equals("") || tv_kinhdo.getText().toString().equals("")){
+            if (tv_vido.getText().toString().equals("") || tv_kinhdo.getText().toString().equals("")) {
                 Toast.makeText(getContext(), "Không định vị được vị trí - Vui lòng khởi độnng wifi", Toast.LENGTH_SHORT).show();
                 btn_xacnhan.setEnabled(false);
             } else {
@@ -259,10 +275,10 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         List<String> chiTietTinhTrang = Arrays.asList(chiTietTinhTrangArray);
 
 
-       CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,
-               thoiGianDuKien,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen
-               ,"Đang Xử Lý",chiTietTinhTrang,"123",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()));
-    //    cungCapHangHoa.setDuAnId(duAnList.get(spn_duAn.getId()).getId());
+        CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(), tenUser, sdtUser, diachiUser,
+                thoiGianDuKien, tenItem, tenLoaiItem, khoiLuongItem, diaChiCCC, loaiHinhVanChuyen
+                , "Đang Xử Lý", chiTietTinhTrang, "123", Double.parseDouble(tv_vido.getText().toString()), Double.parseDouble(tv_kinhdo.getText().toString()));
+        cungCapHangHoa.setDuAnId(duAnList.get(duAnIndex).getId());
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -273,10 +289,10 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                 tv_viTriKho.setText("");
 
                 // update soLuong DuAn
-              /*  DuAn duAnUpdate = duAnList.get(spn_duAn.getId());
+                DuAn duAnUpdate = duAnList.get(duAnIndex);
                 Map<String, Object> updates = new HashMap<>();
                 updates.put("soLuongHienTai", duAnUpdate.getSoLuongHienTai() + cungCapHangHoa.getSoLuong());
-                duAnRef.document(duAnUpdate.getId()).update(updates);*/
+                duAnRef.document(duAnUpdate.getId()).update(updates);
 
             }
 

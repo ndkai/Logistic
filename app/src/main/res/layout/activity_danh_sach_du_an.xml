@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DanhSachDuAnActivity"
+    android:layout_margin="@dimen/_8sdp"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -35,7 +36,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Giá trị ứu trợ của cá nhân : "
+            android:text="Tổng cứu trợ cá nhân : "
             android:textStyle="bold"
             android:textSize="20sp"/>
         <TextView
@@ -55,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tổng cứu trợ : "
+            android:text="Tổng cứu trợ toàn hệ thống : "
             android:textStyle="bold"
             android:textSize="20sp"/>
         <TextView
