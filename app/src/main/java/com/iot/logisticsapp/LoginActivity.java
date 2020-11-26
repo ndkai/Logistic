@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     EditText email, password;
     Button login;
-    TextView txt_forgot;
+    TextView txt_forgot, txt_signup;
 
     FirebaseAuth auth;
 
@@ -40,11 +40,14 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
         txt_forgot = findViewById(R.id.txt_forgot);
+        txt_signup = findViewById(R.id.txt_signup);
 
         auth = FirebaseAuth.getInstance();
 
 
         final ProgressDialog pd = new ProgressDialog(LoginActivity.this);
+
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +133,13 @@ public class LoginActivity extends AppCompatActivity {
 
                 builder.create().show();
 
+            }
+        });
+
+        txt_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
             }
         });
     }

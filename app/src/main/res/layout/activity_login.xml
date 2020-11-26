@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forgot password ? Recover"
+            android:text="Quên mật khẩu ? Khôi phục"
             android:id="@+id/txt_forgot"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
@@ -72,7 +72,7 @@
             android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account ? Sign up"
+            android:text="Chưa có tài khoản ? Đăng Ký"
             android:id="@+id/txt_signup"
             android:gravity="center_horizontal" />
     </LinearLayout>

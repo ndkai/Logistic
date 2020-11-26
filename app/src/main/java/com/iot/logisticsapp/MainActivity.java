@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro;
+    TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro, tv_Logout;
     CheckBox cb_CCHH, cb_CCDVVT, cb_CCK, cb_tuVan;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tv_tenUser = findViewById(R.id.tv_tenUser);
+        tv_Logout = findViewById(R.id.tv_Logout);
         tv_sđtUser = findViewById(R.id.tv_sđtUser);
         tv_diachiUser = findViewById(R.id.tv_diachiUser);
         tv_chuyenVaiTro = findViewById(R.id.tv_chuyenVaiTro);
@@ -169,6 +170,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Main_NguoiNhanCuuTroActivity.class));
+            }
+        });
+        tv_Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp"
+    tools:context=".RegisterActivity">
+
+
+    <TextView
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logistic" />
+
+    <EditText
+        android:padding="10dp"
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:hint="Ten"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/editext_background"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:hint="Email"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/editext_background"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:id="@+id/diaChiUser"
+        android:layout_width="match_parent"
+        android:hint="Địa chỉ"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/editext_background"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:id="@+id/sdtUser"
+        android:layout_width="match_parent"
+        android:hint="Số điện thoại"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/editext_background"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:hint="Mật khẩu"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/editext_background"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register"
+        android:text="Đăng Ký"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/button_background"
+        android:layout_marginTop="15dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đã có tài khoản ? Đăng Nhập"
+        android:id="@+id/txt_login"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>
