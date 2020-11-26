@@ -63,18 +63,6 @@ public class chiTietHangHoaActivity extends AppCompatActivity {
         tv_danhsachTinhTrang = findViewById(R.id.tv_danhsachTinhTrang);
 
 
-
-       /* Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Chi tiết hàng hóa");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });*/
-
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());

@@ -23,6 +23,7 @@
             android:id="@+id/bottom_navigation"
             app:itemIconTint="@color/selector"
             app:labelVisibilityMode="labeled"
+            app:itemTextColor="#ED1F77"
             android:background="?android:attr/windowBackground"
             app:menu="@menu/bottom_navigation_kho"/>
 

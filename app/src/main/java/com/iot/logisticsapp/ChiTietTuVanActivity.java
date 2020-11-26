@@ -13,7 +13,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +35,7 @@ import java.util.List;
 
 public class ChiTietTuVanActivity extends AppCompatActivity {
 
+    TextView tv_chuDe;
     RecyclerView recyclerView;
     private com.iot.logisticsapp.Adapter.tuVanAdapter tuVanAdapter;
     private List<TuVan> tuVanList;
@@ -56,20 +56,16 @@ public class ChiTietTuVanActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_chi_tiet_tu_van);
 
+
+        tv_chuDe = findViewById(R.id.tv_chuDe);
+
         Intent intent = getIntent();
         chuDe = intent.getStringExtra("ChuDe");
         vaiTro = intent.getStringExtra("vaiTro");
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(chuDe);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        tv_chuDe.setText(chuDe);
+
+
 
 
 

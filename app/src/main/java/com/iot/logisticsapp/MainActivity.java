@@ -1,11 +1,13 @@
 package com.iot.logisticsapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.CheckBox;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +30,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro, tv_Logout;
-    CheckBox cb_CCHH, cb_CCDVVT, cb_CCK, cb_tuVan, cb_DanhSachDuAn;
+    TextView tv_sđtUser, tv_tenUser, tv_diachiUser, tv_chuyenVaiTro, tv_Logout,tv_gia;
+  /*  CheckBox cb_CCHH, cb_CCDVVT, cb_CCK, cb_tuVan, cb_DanhSachDuAn;*/
+
+    Button btn_hangHoa, btn_tuVan, btn_Kho, btn_dichVuVanTai, btn_danhSachDuAn;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -49,14 +53,21 @@ public class MainActivity extends AppCompatActivity {
         tv_sđtUser = findViewById(R.id.tv_sđtUser);
         tv_diachiUser = findViewById(R.id.tv_diachiUser);
         tv_chuyenVaiTro = findViewById(R.id.tv_chuyenVaiTro_main);
-        cb_CCHH = findViewById(R.id.cb_CCHH);
 
+      /*  cb_CCHH = findViewById(R.id.cb_CCHH);
         cb_CCDVVT = findViewById(R.id.cb_CCDVVT);
         cb_CCK = findViewById(R.id.cb_CCK);
         cb_tuVan = findViewById(R.id.cb_tuVan);
-        cb_DanhSachDuAn = findViewById(R.id.cb_DanhSachDuAn);
+        cb_DanhSachDuAn = findViewById(R.id.cb_DanhSachDuAn);*/
 
-        onClick();
+        btn_hangHoa = findViewById(R.id.btn_hangHoa);
+        btn_tuVan = findViewById(R.id.btn_tuVan);
+        btn_Kho = findViewById(R.id.btn_Kho);
+        btn_dichVuVanTai = findViewById(R.id.btn_dichVuVanTai);
+        btn_danhSachDuAn = findViewById(R.id.btn_danhSachDuAn);
+        tv_gia = findViewById(R.id.tv_gia);
+
+
 
         FirebaseFirestore.getInstance().collection("user")
                 .document(FirebaseAuth.getInstance().getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -67,13 +78,132 @@ public class MainActivity extends AppCompatActivity {
 
                     User user = value.toObject(User.class);
                     if(!user.getVaiTro().equals("kho")){
-                        cb_CCK.setEnabled(false);
+                      /*  cb_CCK.setEnabled(false);*/
+
+                        btn_Kho.setEnabled(false);
+                        btn_hangHoa.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_hangHoa.getText().toString().trim());
+                                btn_hangHoa.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                             //   btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+                        btn_tuVan.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_tuVan.getText().toString().trim());
+                                btn_tuVan.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                             //   btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+                      /*  btn_Kho.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_Kho.getText().toString().trim());
+                                btn_Kho.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });*/
+                        btn_dichVuVanTai.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_dichVuVanTai.getText().toString().trim());
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                            //    btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+                        btn_danhSachDuAn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_danhSachDuAn.getText().toString().trim());
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                             //   btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+
+
+                    } else {
+                        btn_hangHoa.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_hangHoa.getText().toString().trim());
+                                btn_hangHoa.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+                        btn_tuVan.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_tuVan.getText().toString().trim());
+                                btn_tuVan.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+                        btn_Kho.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_Kho.getText().toString().trim());
+                                btn_Kho.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+                        btn_dichVuVanTai.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_dichVuVanTai.getText().toString().trim());
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+                        btn_danhSachDuAn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                tv_gia.setText(btn_danhSachDuAn.getText().toString().trim());
+                                btn_danhSachDuAn.setTextColor(Color.parseColor("#ED1F77"));
+                                btn_hangHoa.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_tuVan.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_Kho.setTextColor(Color.parseColor("#4C4B4B"));
+                                btn_dichVuVanTai.setTextColor(Color.parseColor("#4C4B4B"));
+                            }
+                        });
+
                     }
+                    onClick();
 
                 }
 
             }
         });
+
+        Log.d("TAG", " error : ");
 
     }
 
@@ -142,51 +272,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick() {
-        cb_CCHH.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cb_CCDVVT.setChecked(false);
-                cb_CCK.setChecked(false);
-                cb_tuVan.setChecked(false);
-                cb_DanhSachDuAn.setChecked(false);
-            }
-        });
-        cb_CCDVVT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cb_CCHH.setChecked(false);
-                cb_CCK.setChecked(false);
-                cb_tuVan.setChecked(false);
-                cb_DanhSachDuAn.setChecked(false);
-            }
-        });
-        cb_CCK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cb_CCHH.setChecked(false);
-                cb_CCDVVT.setChecked(false);
-                cb_tuVan.setChecked(false);
-                cb_DanhSachDuAn.setChecked(false);
-            }
-        });
-        cb_tuVan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cb_CCHH.setChecked(false);
-                cb_CCDVVT.setChecked(false);
-                cb_CCK.setChecked(false);
-                cb_DanhSachDuAn.setChecked(false);
-            }
-        });
-        cb_DanhSachDuAn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cb_CCHH.setChecked(false);
-                cb_CCDVVT.setChecked(false);
-                cb_CCK.setChecked(false);
-                cb_tuVan.setChecked(false);
-            }
-        });
+
+
+
+
+
+
 
         tv_chuyenVaiTro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,14 +296,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Next(View view) {
-        if (cb_CCHH.isChecked()) {
+        if (tv_gia.getText().toString().equals("Hàng hóa")) {
             startActivity(new Intent(getApplicationContext(), CungCapHangHoaAcitivity.class));
-        } else if (cb_CCDVVT.isChecked()) {
+        } else if (tv_gia.getText().toString().equals("Dịch Vụ Vận Tải")) {
             startActivity(new Intent(getApplicationContext(), CungCapVanTaiActivity.class));
-        } else if (cb_tuVan.isChecked()) {
+        } else if (tv_gia.getText().toString().equals("Tư Vấn")) {
             startActivity(new Intent(getApplicationContext(), TuVanActivity.class));
-        } else if (cb_DanhSachDuAn.isChecked()) {
-            startActivity(new Intent(getApplicationContext(), DanhSachDuAnActivity.class));
+        } else if (tv_gia.getText().toString().equals("Danh Sách Dự Án")) {
+            Toast.makeText(this, "Đang Lỗi ---- Đợi fix sau", Toast.LENGTH_SHORT).show();
+          /*  startActivity(new Intent(getApplicationContext(), DanhSachDuAnActivity.class));*/
         } else startActivity(new Intent(getApplicationContext(), KhoActivity.class));
     }
 }

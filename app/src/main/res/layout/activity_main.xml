@@ -94,8 +94,60 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Loại hình cứu trợ"/>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1.5"
+                    android:id="@+id/btn_hangHoa"
+                    android:text="Hàng hóa"
+                    android:background="@drawable/background_chitiet_tinhtrang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:layout_weight="0.5"
+                    android:id="@+id/btn_tuVan"
+                    android:text="Tư Vấn"
+                    android:background="@drawable/background_chitiet_tinhtrang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="0.5"
+                    android:id="@+id/btn_Kho"
+                    android:text="Kho"
+                    android:background="@drawable/background_chitiet_tinhtrang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:layout_weight="1.5"
+                    android:id="@+id/btn_dichVuVanTai"
+                    android:text="Dịch Vụ Vận Tải"
+                    android:background="@drawable/background_chitiet_tinhtrang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
 
-            <CheckBox
+            <Button
+                android:layout_marginTop="10dp"
+                android:id="@+id/btn_danhSachDuAn"
+                android:text="Danh Sách Dự Án"
+                android:background="@drawable/background_chitiet_tinhtrang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        <!--    <CheckBox
                 android:checked="true"
                 android:id="@+id/cb_CCHH"
                 android:text="Cung cấp hàng hóa"
@@ -111,19 +163,17 @@
                 android:text="Cung cấp kho"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
             <CheckBox
                 android:id="@+id/cb_DanhSachDuAn"
                 android:text="Danh Sách Dự Án"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
             <CheckBox
                 android:id="@+id/cb_tuVan"
                 android:text="Tư Vấn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-
+-->
             <Button
                 android:textColor="#fff"
                 android:background="#ED1F77"
@@ -143,7 +193,11 @@
     </androidx.core.widget.NestedScrollView>
 
 
-
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_gia"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <TextView
         android:layout_marginBottom="10dp"

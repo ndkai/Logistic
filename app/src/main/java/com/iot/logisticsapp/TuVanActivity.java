@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,16 +33,7 @@ public class TuVanActivity extends AppCompatActivity {
         tv_GiaiPhapTaiChinh = findViewById(R.id.tv_GiaiPhapTaiChinh);
         tv_KienThucNongNghiep = findViewById(R.id.tv_KienThucNongNghiep);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Danh Mục Chủ Đề Tư Vấn");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
 
         onclick();
     }

@@ -15,7 +15,15 @@
             android:layout_width="match_parent"
             android:id="@+id/toolbar"
             android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground">
+            android:background="#ED1F77"          >
+            <TextView
+                android:textColor="#fff"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chi Tiết Hàng Hóa" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -65,13 +73,15 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
         <Button
+            android:background="#ED1F77"
+            android:textColor="#fff"
             android:text="Cập nhật tình trạng"
             android:id="@+id/btn_capNhatTinhTrang"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"/>
         <TextView
             android:gravity="center"
-            android:background="@drawable/background_listview"
+            android:background="@drawable/button_background"
             android:textStyle="bold"
             android:textSize="18sp"
             android:text="Đã Nhập Kho"
@@ -88,13 +98,15 @@
         android:orientation="horizontal"
         android:layout_height="wrap_content">
         <Button
+            android:background="#ED1F77"
+            android:textColor="#fff"
             android:text="Cập nhật tình trạng"
             android:id="@+id/btn_theoDoiYeuCau"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"/>
         <TextView
             android:gravity="center"
-            android:background="@drawable/background_listview"
+            android:background="@drawable/button_background"
             android:textStyle="bold"
             android:textSize="18sp"
             android:text="Đã Nhận"

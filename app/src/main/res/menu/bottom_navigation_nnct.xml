@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_home"
         android:id="@+id/nav_trangchu"
         android:title="Trang Chủ"/>
     <item
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_tinhtrang"
         android:id="@+id/nav_yeucau"
         android:title="Yêu Cầu"/>
     <item
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_fb"
         android:id="@+id/nav_feedback"
         android:title="Feedback"/>
    

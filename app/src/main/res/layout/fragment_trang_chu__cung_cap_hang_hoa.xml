@@ -46,7 +46,7 @@
             android:textColor="#ED1F77"
             android:id="@+id/tv_tuMangDenCCC"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/button_background"
             android:gravity="center"
@@ -58,7 +58,7 @@
             android:textColor="#4C4B4B"
             android:id="@+id/tv_cccDenLay"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#EFF2F3"
             android:gravity="center"
@@ -93,7 +93,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -117,7 +118,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -140,7 +142,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -208,7 +211,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal"
                 android:weightSum="3">
@@ -231,7 +235,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -242,19 +247,45 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <EditText
+                <Spinner
+                    android:layout_marginLeft="35dp"
+                    android:id="@+id/spn_GiaoDuc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"/>
+                <Spinner
+                    android:layout_marginLeft="35dp"
+                    android:id="@+id/spn_Yte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"/>
+                <Spinner
+                    android:layout_marginLeft="35dp"
+                    android:id="@+id/spn_NoiCuTru"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"/>
+                <Spinner
+                    android:layout_marginLeft="35dp"
+                    android:id="@+id/spn_NhuYeuPham"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"/>
+
+               <!-- <EditText
                     android:id="@+id/tv_tenHang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" />-->
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -277,7 +308,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -316,7 +348,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal"
                     android:weightSum="3">
@@ -340,7 +373,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 

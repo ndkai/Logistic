@@ -15,12 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         tools:ignore="Suspicious0dp">
-        <TextView
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logistic" />
 
         <EditText
             android:text="hao@gmail.com"
@@ -30,7 +24,7 @@
             android:layout_width="match_parent"
             android:hint="Email"
             android:layout_marginTop="15dp"
-            android:background="@drawable/editext_background"
+            android:background="@drawable/button_background"
             android:layout_height="wrap_content"/>
         <EditText
             android:text="123456"
@@ -40,7 +34,7 @@
             android:layout_width="match_parent"
             android:hint="Passwork"
             android:layout_marginTop="15dp"
-            android:background="@drawable/editext_background"
+            android:background="@drawable/button_background"
             android:layout_height="wrap_content"/>
 
         <Button
@@ -48,15 +42,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/login"
             android:text="Login"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/button_background"
+            android:background="#ED1F77"
+            android:textSize="18sp"
+            android:textColor="#F4F2F3"
             android:layout_marginTop="15dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Quên mật khẩu ? Khôi phục"
             android:id="@+id/txt_forgot"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            />
     </LinearLayout>
 
 

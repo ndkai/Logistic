@@ -16,7 +16,16 @@
             android:layout_width="match_parent"
             android:id="@+id/toolbar"
             android:layout_height="wrap_content"
-            android:background="?android:attr/windowBackground">
+            android:background="#ED1F77">
+            <TextView
+                android:textColor="#fff"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trả Lời Câu Hỏi" />
+
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -106,7 +115,7 @@
 
             android:gravity="center"
             android:layout_weight="1.5"
-            android:textColor="@color/colorPrimary"
+            android:textColor="#ED1F77"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="5dp"

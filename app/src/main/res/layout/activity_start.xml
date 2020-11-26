@@ -9,11 +9,20 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="194dp"
-        android:layout_height="133dp"
+        android:layout_width="223dp"
+        android:layout_height="163dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
         android:src="@drawable/picture1" />
+    <TextView
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="#ED1F77"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LHA"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_marginTop="50dp"
@@ -23,31 +32,24 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:textColor="#ED1F77"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Logistic"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/button_background"
-            android:text="Đăng Nhập"
-            android:textColor="#ED1F77" />
-
         <Button
             android:id="@+id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@drawable/button_background"
             android:text="Đăng Ký"
-            android:textColor="#ED1F77"/>
+            android:background="#ED1F77"
+            android:textSize="18sp"
+            android:textColor="#F4F2F3"/>
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Đăng Nhập"
+            android:background="#ED1F77"
+            android:textSize="18sp"
+            android:textColor="#F4F2F3" />
     </LinearLayout>
 
 
