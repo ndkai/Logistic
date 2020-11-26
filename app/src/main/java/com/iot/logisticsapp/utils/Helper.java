@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 
@@ -20,7 +21,7 @@ public class Helper {
 // paint defines the text color, stroke width and size
         Paint color = new Paint();
         color.setTextSize(40);
-        color.setColor(Color.RED);
+        color.setColor(0xffEE5F5F);
         color.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
 
         BitmapFactory.Options opt = new BitmapFactory.Options();
@@ -31,7 +32,7 @@ public class Helper {
         Bitmap resized = Bitmap.createScaledBitmap(imageBitmap, Constants.markerWidth, Constants.markerHeight, true);
 
 // modify canvas
-        canvas1.drawBitmap(resized, 40, 40, color);
+        canvas1.drawBitmap(resized, 0, 0, color);
         canvas1.drawText(text, 30, 40, color);
         return bmp;
 
