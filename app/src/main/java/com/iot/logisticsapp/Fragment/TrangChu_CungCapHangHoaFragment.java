@@ -1,15 +1,16 @@
 package com.iot.logisticsapp.Fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -31,7 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.iot.logisticsapp.DiaChiUserMapActivity;
+import com.iot.logisticsapp.GeoLocation;
 import com.iot.logisticsapp.Model.CungCapHangHoa;
 import com.iot.logisticsapp.R;
 
@@ -41,7 +42,7 @@ import java.util.List;
 
 public class TrangChu_CungCapHangHoaFragment extends Fragment {
 
-    EditText tv_tenUser, tv_sđtUser, tv_diachiUser, tv_tenHang, tv_khoiLuongHang, tv_thoiGianDuKien, tv_viTriKho;
+    EditText tv_tenUser, tv_sđtUser, tv_diachiUser, tv_tenHang, tv_khoiLuongHang, tv_thoiGianDuKien, tv_viTriKho, tv_kinhdo, tv_vido;
     TextView tv_loaiHinhVanChuyen;
     Button tv_tuMangDenCCC, tv_cccDenLay;
     Button btn_xacnhan;
@@ -53,7 +54,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
     private DocumentReference userRef = db.document("user/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
     private CollectionReference cungCapHangHoaRef = db.collection("CungCapHangHoa");
 
-
+    CheckBox cb_xacnhanDiaChi;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,15 +75,29 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         tv_cccDenLay = view.findViewById(R.id.tv_cccDenLay);
         ln_tuMangDenCCC = view.findViewById(R.id.ln_tuMangDenCCC);
 
+        tv_kinhdo = view.findViewById(R.id.tv_kinhdo);
+        tv_vido = view.findViewById(R.id.tv_vido);
+        cb_xacnhanDiaChi = view.findViewById(R.id.cb_xacnhanDiaChi);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spn_loaiHang.setAdapter(adapter);
 
+        cb_xacnhanDiaChi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GeoLocation geoLocation = new GeoLocation();
+                geoLocation.getAddress(tv_diachiUser.getText().toString(),getContext(),new GeoHandler());
+            }
+        });
+
+
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(tv_loaiHinhVanChuyen.getText().toString().equals("Tự Vận Chuyển")){
-                    if(tv_tenUser.getText().toString().equals("") || tv_sđtUser.getText().toString().equals("") || tv_diachiUser.getText().toString().equals("") ||
+                    if(!cb_xacnhanDiaChi.isChecked()||tv_tenUser.getText().toString().equals("") || tv_sđtUser.getText().toString().equals("") || tv_diachiUser.getText().toString().equals("") ||
                             tv_tenHang.getText().toString().equals("") || tv_khoiLuongHang.getText().toString().equals("") || tv_thoiGianDuKien.getText().toString().equals("") ||
                             tv_viTriKho.getText().toString().equals("")){
                         Toast.makeText(getContext(), "Vui Lòng Điền Đủ Thông Tin", Toast.LENGTH_SHORT).show();
@@ -91,7 +106,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                     }
                 }
                 else {
-                    if(tv_tenUser.getText().toString().equals("") || tv_sđtUser.getText().toString().equals("") || tv_diachiUser.getText().toString().equals("") ||
+                    if(!cb_xacnhanDiaChi.isChecked()||tv_tenUser.getText().toString().equals("") || tv_sđtUser.getText().toString().equals("") || tv_diachiUser.getText().toString().equals("") ||
                             tv_tenHang.getText().toString().equals("") || tv_khoiLuongHang.getText().toString().equals("")){
                         Toast.makeText(getContext(), "Vui Lòng Điền Đủ Thông Tin", Toast.LENGTH_SHORT).show();
                     } else {
@@ -101,13 +116,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
             }
         });
 
-        tv_diachiUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getContext(), DiaChiUserMapActivity.class));
-                Log.d("TAG","error : ");
-            }
-        });
+
 
         tv_tuMangDenCCC.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
@@ -169,6 +178,25 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         });
     }
 
+    private class GeoHandler extends Handler {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            String vido, kinhdo;
+            switch (msg.what){
+                case 1: Bundle bundle = msg.getData();
+                    vido = bundle.getString("vido");
+                    kinhdo = bundle.getString("kinhdo");
+                    break;
+                default:
+                    vido = null;
+                    kinhdo = null;
+            }
+            tv_vido.setText(vido);
+            tv_kinhdo.setText(kinhdo);
+
+        }
+    }
+
     public void addSave(){
         String tenUser = tv_tenUser.getText().toString();
         String sdtUser = tv_sđtUser.getText().toString();
@@ -185,7 +213,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
         List<String> chiTietTinhTrang = Arrays.asList(chiTietTinhTrangArray);
 
         CungCapHangHoa cungCapHangHoa = new CungCapHangHoa(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenUser,sdtUser,diachiUser,thoiGianDuKien
-                                                             ,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen,"Đang Xử Lý","kho Id",12,11,chiTietTinhTrang);
+                ,tenItem,tenLoaiItem,khoiLuongItem,diaChiCCC,loaiHinhVanChuyen,"Đang Xử Lý","kho Id",Double.parseDouble(tv_kinhdo.getText().toString()),Double.parseDouble(tv_vido.getText().toString()),chiTietTinhTrang);
         cungCapHangHoaRef.add(cungCapHangHoa).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {

@@ -26,7 +26,7 @@ public class CungCapHangHoa {
 
 
     public CungCapHangHoa(String userID, String tenUser, String sdtUser, String diachiUser, String thoiGianGuiHang, String tenItem, String tenLoaiItem, int soLuong
-            , String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String khoID, long kinhDo, long viDo, List<String> chiTietTinhTrang) {
+            , String diaChiCCC, String loaiHinhVanChuyen, String tinhTrangVanChuyen, String khoID, double kinhDo, double viDo, List<String> chiTietTinhTrang) {
         this.userID = userID;
         this.tenUser = tenUser;
         this.sdtUser = sdtUser;

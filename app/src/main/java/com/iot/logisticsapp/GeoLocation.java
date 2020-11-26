@@ -18,26 +18,29 @@ public class GeoLocation {
             @Override
             public void run() {
                 Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-                String result = null;
+                String vido = null;
+                String kinhdo = null;
                 try {
                     List addressList = geocoder.getFromLocationName(locationAddress,1);
                     if(addressList!=null && addressList.size()>0){
                         Address address = (Address) addressList.get(0);
                         StringBuilder stringBuilder = new StringBuilder();
-                        stringBuilder.append(address.getLatitude()).append("\n");
-                        stringBuilder.append(address.getLongitude()).append("\n");
-                        result = stringBuilder.toString();
+                        stringBuilder.append(address.getLatitude());
+                        vido = stringBuilder.toString();
+                        StringBuilder stringBuilder1 = new StringBuilder();
+                        stringBuilder1.append(address.getLongitude());
+                        kinhdo = stringBuilder1.toString();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }finally {
                     Message message = Message.obtain();
                     message.setTarget(handler);
-                    if(result!=null){
+                    if(vido!=null&&kinhdo!=null){
                         message.what =1 ;
                         Bundle bundle = new Bundle();
-                        result = "Add : " + locationAddress + " L & L " + result;
-                        bundle.putString("address",result);
+                        bundle.putString("vido",vido);
+                        bundle.putString("kinhdo",kinhdo);
                         message.setData(bundle);
                     }
                     message.sendToTarget();
