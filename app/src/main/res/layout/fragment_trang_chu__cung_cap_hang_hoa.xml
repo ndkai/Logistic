@@ -70,7 +70,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/linear">
 
         <LinearLayout
@@ -109,7 +109,7 @@
                     android:id="@+id/tv_tenUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="69dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -155,7 +155,7 @@
                     android:id="@+id/tv_diachiUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="25dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -221,6 +221,7 @@
                     android:textStyle="bold" />
 
                 <Spinner
+                    android:layout_marginLeft="30dp"
                     android:id="@+id/spn_loaiHang"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -245,7 +246,7 @@
                     android:id="@+id/tv_tenHang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="35dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -268,7 +269,7 @@
                     android:id="@+id/tv_khoiLuongHang"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="40dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -288,6 +289,7 @@
                     android:textStyle="bold" />
 
                 <Spinner
+                    android:layout_marginLeft="69dp"
                     android:id="@+id/spn_duAn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -330,7 +332,7 @@
                         android:id="@+id/tv_thoiGianDuKien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="30dp"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -353,7 +355,7 @@
                         android:id="@+id/tv_viTriKho"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="35dp"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>

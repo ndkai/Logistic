@@ -28,7 +28,7 @@
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/tv_tenUser"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="68dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tên : "
@@ -68,7 +68,7 @@
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/tv_diachiUser"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="25dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Địa chỉ"
@@ -149,6 +149,7 @@
             android:textStyle="bold"
             android:textSize="20sp"/>
         <Spinner
+            android:layout_marginLeft="15dp"
             android:id="@+id/spn_GiaoDuc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

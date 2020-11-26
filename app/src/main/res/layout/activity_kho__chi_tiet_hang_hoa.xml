@@ -104,34 +104,38 @@
 
     </LinearLayout>
 
-
-
-
-    <LinearLayout
-        android:layout_margin="10dp"
-        android:layout_gravity="center"
-        android:background="@drawable/background_chitiet_tinhtrang"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_margin="10dp"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="23sp"
-            android:text="Chi Tiết Tình Trạng"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_gravity="center"
+            android:background="@drawable/background_chitiet_tinhtrang"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="23sp"
+                android:text="Chi Tiết Tình Trạng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
-        <TextView
-            android:textSize="20sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="danhsachTinhTrang"
-            android:id="@+id/tv_danhsachTinhTrang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+            <TextView
+                android:textSize="20sp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="danhsachTinhTrang"
+                android:id="@+id/tv_danhsachTinhTrang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
 
 
 

@@ -60,7 +60,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/tv_tenTaiXe"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="82dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -80,7 +80,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/tv_cmndTaiXe"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="43dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -128,6 +128,7 @@
                     android:textStyle="bold"
                     android:textSize="20sp"/>
                 <Spinner
+                    android:layout_marginLeft="33dp"
                     android:id="@+id/spn_loaiXe"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -147,7 +148,7 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/tv_bienSo"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="32dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
@@ -201,7 +202,7 @@
                         android:textSize="20sp"/>
                     <EditText
                         android:id="@+id/tv_tuNgay"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="29dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
@@ -221,7 +222,7 @@
                         android:textSize="20sp"/>
                     <EditText
                         android:id="@+id/tv_denNgay"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="17dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
