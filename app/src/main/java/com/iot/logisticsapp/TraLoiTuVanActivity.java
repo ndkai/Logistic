@@ -45,6 +45,7 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
     TextView tenNguoiDatCauHoi, sdtNguoiDatCauHoi, cauHoiNguoiDatCauHoi;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +62,6 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
         cauHoiNguoiDatCauHoi.setText("Câu Hỏi : " + intent.getStringExtra("cauHoiNguoiDatCauHoi"));
 
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Trả Lời");
@@ -74,13 +74,12 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
         });
 
 
-
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         traLoiTuVanList = new ArrayList<>();
-        traLoiTuVanAdapter = new traLoiTuVanAdapter(this,traLoiTuVanList);
+        traLoiTuVanAdapter = new traLoiTuVanAdapter(this, traLoiTuVanList);
         recyclerView.setAdapter(traLoiTuVanAdapter);
 
         add_cauHoi = findViewById(R.id.add_cauHoi);
@@ -90,7 +89,7 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
         gui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(add_cauHoi.getText().toString().equals("")){
+                if (add_cauHoi.getText().toString().equals("")) {
                     Toast.makeText(TraLoiTuVanActivity.this, "Bạn Chưa Nhập Nội Dung Câu Hỏi", Toast.LENGTH_SHORT).show();
                 } else {
                     noidungCauHoi();
@@ -112,17 +111,19 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
         db.collection("TraLoiTuVan").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error!=null){return;}
+                if (error != null) {
+                    return;
+                }
                 if (!value.isEmpty()) {
                     traLoiTuVanList.clear();
-                    for (QueryDocumentSnapshot documentSnapshot : value){
+                    for (QueryDocumentSnapshot documentSnapshot : value) {
                         TraLoiTuVan traLoiTuVan = documentSnapshot.toObject(TraLoiTuVan.class);
 
 
-                            if(traLoiTuVan.getUserId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    &&traLoiTuVan.getCauTraLoiID().equals(cauHoiId)){
-                                traLoiTuVanList.add(traLoiTuVan);
-                                traLoiTuVanAdapter.notifyDataSetChanged();
+                        if (traLoiTuVan.getUserId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                && traLoiTuVan.getCauTraLoiID().equals(cauHoiId)) {
+                            traLoiTuVanList.add(traLoiTuVan);
+                            traLoiTuVanAdapter.notifyDataSetChanged();
 
                         }
 
@@ -137,7 +138,7 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
 
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String cauTraLoi = add_cauHoi.getText().toString().trim();
-        TraLoiTuVan traLoiTuVan = new TraLoiTuVan(userID,cauTraLoi,cauHoiId,tenUser);
+        TraLoiTuVan traLoiTuVan = new TraLoiTuVan(userID, cauTraLoi, cauHoiId, tenUser);
         db.collection("TraLoiTuVan").add(traLoiTuVan).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
@@ -146,11 +147,13 @@ public class TraLoiTuVanActivity extends AppCompatActivity {
         });
     }
 
-    public void getUser(){
+    public void getUser() {
         db.collection("user").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error!=null){return;}
+                if (error != null) {
+                    return;
+                }
                 if (value.exists()) {
                     User user = value.toObject(User.class);
                     tenUser = user.getName();
