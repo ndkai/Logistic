@@ -76,7 +76,6 @@
              android:textStyle="bold"
              android:textSize="20sp"/>
       </LinearLayout>
-
       <TextView
           android:textStyle="bold"
           android:textSize="20sp"
