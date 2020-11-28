@@ -4,6 +4,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class CungCapVanTai {
     public String xeID;
+    public String userID;
     public String tenTaiXe;
     public String cmndTaiXe ;
     public String gplxTaiXe;
@@ -18,8 +19,8 @@ public class CungCapVanTai {
     public double viDo;
 
 
-    public CungCapVanTai(String xeID, String tenTaiXe, String cmndTaiXe, String gplxTaiXe, String loaiXe, String bienSo, String tuNgay, String denNgay, int taiTrong, String khoID, double kinhDo, double viDo) {
-        this.xeID = xeID;
+    public CungCapVanTai(String userID, String tenTaiXe, String cmndTaiXe, String gplxTaiXe, String loaiXe, String bienSo, String tuNgay, String denNgay, int taiTrong, String khoID, double kinhDo, double viDo) {
+        this.userID = userID;
         this.tenTaiXe = tenTaiXe;
         this.cmndTaiXe = cmndTaiXe;
         this.gplxTaiXe = gplxTaiXe;
@@ -42,6 +43,14 @@ public class CungCapVanTai {
 
     public void setXeID(String xeID) {
         this.xeID = xeID;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getTenTaiXe() {

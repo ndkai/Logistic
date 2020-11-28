@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,7 +22,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.iot.logisticsapp.GeoLocation;
 import com.iot.logisticsapp.Model.CungCapVanTai;
 import com.iot.logisticsapp.R;
@@ -112,6 +117,25 @@ public class TrangChu_CungCapVanTaiFragment extends Fragment {
             }
 
         }
+    }
+
+    public void onStart() {
+        super.onStart();
+
+        cungCapVanTaiRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if(error!=null){return;}
+                if (!value.isEmpty()) {
+                    for (QueryDocumentSnapshot documentSnapshot : value){
+                        CungCapVanTai cungCapVanTai = documentSnapshot.toObject(CungCapVanTai.class);
+                        cungCapVanTai.setXeID(documentSnapshot.getId());
+                        cungCapVanTaiRef.document(cungCapVanTai.getXeID()).update("xeID",cungCapVanTai.getXeID());
+
+                    }
+                }
+            }
+        });
     }
 
     public void addSave(){
