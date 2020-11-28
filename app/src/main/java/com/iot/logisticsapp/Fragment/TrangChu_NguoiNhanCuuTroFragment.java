@@ -198,6 +198,13 @@ public class TrangChu_NguoiNhanCuuTroFragment extends Fragment {
             }
             tv_vido.setText(vido);
             tv_kinhdo.setText(kinhdo);
+            if(tv_vido.getText().toString().equals("") || tv_kinhdo.getText().toString().equals("")){
+                Toast.makeText(getContext(), "Không định vị được vị trí - Vui lòng khởi độnng wifi", Toast.LENGTH_SHORT).show();
+                btn_xacnhan.setEnabled(false);
+            } else {
+                Toast.makeText(getContext(), "Kinh Độ : " + tv_vido.getText().toString() + "\n" + "Vĩ Độ" + tv_kinhdo.getText().toString(), Toast.LENGTH_SHORT).show();
+                btn_xacnhan.setEnabled(true);
+            }
 
         }
     }

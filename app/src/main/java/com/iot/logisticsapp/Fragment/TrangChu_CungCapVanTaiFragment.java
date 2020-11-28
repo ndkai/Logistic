@@ -1,11 +1,14 @@
 package com.iot.logisticsapp.Fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -19,16 +22,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.iot.logisticsapp.GeoLocation;
 import com.iot.logisticsapp.Model.CungCapVanTai;
 import com.iot.logisticsapp.R;
 
 
 public class TrangChu_CungCapVanTaiFragment extends Fragment {
 
-    EditText tv_tenTaiXe, tv_cmndTaiXe, tv_gplxTaiXe, tv_bienSo, tv_tuNgay, tv_denNgay, tv_taiTrong;
+    EditText tv_tenTaiXe, tv_cmndTaiXe, tv_gplxTaiXe, tv_bienSo, tv_tuNgay, tv_denNgay, tv_taiTrong, tv_diachiUser , tv_kinhdo, tv_vido;
     Spinner spn_loaiXe;
-    String arr[] = {"Xe Thông Thường",   "Xe Đặc Biệt"};
+    String arr[] = {"Thông Thường",   "Đặc Biệt"};
     Button btn_xacnhan;
+    CheckBox cb_xacnhanDiaChi;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference cungCapVanTaiRef = db.collection("CungCapVanTai");
@@ -49,14 +54,27 @@ public class TrangChu_CungCapVanTaiFragment extends Fragment {
         tv_taiTrong = view.findViewById(R.id.tv_taiTrong);
         btn_xacnhan = view.findViewById(R.id.btn_xacnhan);
 
+        tv_diachiUser = view.findViewById(R.id.tv_diachiUser);
+        tv_kinhdo = view.findViewById(R.id.tv_kinhdo);
+        tv_vido = view.findViewById(R.id.tv_vido);
+        cb_xacnhanDiaChi = view.findViewById(R.id.cb_xacnhanDiaChi);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spn_loaiXe.setAdapter(adapter);
 
+        cb_xacnhanDiaChi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GeoLocation geoLocation = new GeoLocation();
+                geoLocation.getAddress(tv_diachiUser.getText().toString(), getContext(), new TrangChu_CungCapVanTaiFragment.GeoHandler());
+            }
+        });
+
         btn_xacnhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(tv_tenTaiXe.getText().toString().equals("") || tv_cmndTaiXe.getText().toString().equals("") || tv_gplxTaiXe.getText().toString().equals("") ||
+                if(!cb_xacnhanDiaChi.isChecked() || tv_tenTaiXe.getText().toString().equals("") || tv_cmndTaiXe.getText().toString().equals("") || tv_gplxTaiXe.getText().toString().equals("") ||
                         tv_bienSo.getText().toString().equals("") || tv_tuNgay.getText().toString().equals("") || tv_denNgay.getText().toString().equals("")) {
                     Toast.makeText(getContext(), "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }else {
@@ -67,6 +85,33 @@ public class TrangChu_CungCapVanTaiFragment extends Fragment {
 
 
         return view;
+    }
+
+    private class GeoHandler extends Handler {
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            String vido, kinhdo;
+            switch (msg.what) {
+                case 1:
+                    Bundle bundle = msg.getData();
+                    vido = bundle.getString("vido");
+                    kinhdo = bundle.getString("kinhdo");
+                    break;
+                default:
+                    vido = null;
+                    kinhdo = null;
+            }
+            tv_vido.setText(vido);
+            tv_kinhdo.setText(kinhdo);
+            if(tv_vido.getText().toString().equals("") || tv_kinhdo.getText().toString().equals("")){
+                Toast.makeText(getContext(), "Không định vị được vị trí - Vui lòng khởi độnng wifi", Toast.LENGTH_SHORT).show();
+                btn_xacnhan.setEnabled(false);
+            } else {
+                Toast.makeText(getContext(), "Kinh Độ : " + tv_vido.getText().toString() + "\n" + "Vĩ Độ" + tv_kinhdo.getText().toString(), Toast.LENGTH_SHORT).show();
+                btn_xacnhan.setEnabled(true);
+            }
+
+        }
     }
 
     public void addSave(){
@@ -80,11 +125,11 @@ public class TrangChu_CungCapVanTaiFragment extends Fragment {
         int taiTrong = Integer.valueOf(tv_taiTrong.getText().toString());
 
         CungCapVanTai cungCapVanTai = new CungCapVanTai(FirebaseAuth.getInstance().getCurrentUser().getUid(),tenTaiXe,cmndTaiXe,gplxTaiXe,loaiXe,bienSo
-                                                        ,tuNgay,denNgay,taiTrong,"0",0,0);
+                                                        ,tuNgay,denNgay,taiTrong,"67Nzk5ohqY32oBYwRkS6",Double.parseDouble(tv_vido.getText().toString()),Double.parseDouble(tv_kinhdo.getText().toString()));
         cungCapVanTaiRef.add(cungCapVanTai).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override
             public void onComplete(@NonNull Task<DocumentReference> task) {
-                Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Cung cấp vận tải thành công", Toast.LENGTH_SHORT).show();
                 tv_tenTaiXe.setText("");
                 tv_cmndTaiXe.setText("");
                 tv_gplxTaiXe.setText("");
