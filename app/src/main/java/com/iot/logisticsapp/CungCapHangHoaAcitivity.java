@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.iot.logisticsapp.Fragment.FeedbackFragment;
 import com.iot.logisticsapp.Fragment.TinhTrang_CungCapHangHoaFragment;
 import com.iot.logisticsapp.Fragment.TrangChu_CungCapHangHoaFragment;
 
@@ -50,6 +51,7 @@ public class CungCapHangHoaAcitivity extends AppCompatActivity {
                             break;
                         case R.id.nav_feedback:
                             Toast.makeText(CungCapHangHoaAcitivity.this, "Feedback", Toast.LENGTH_SHORT).show();
+                            selecFragment = new FeedbackFragment();
                         case R.id.nav_hotro:
                             Toast.makeText(CungCapHangHoaAcitivity.this, "Danh Sách Nhà Hảo Tâm", Toast.LENGTH_SHORT).show();
 

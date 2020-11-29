@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:textSize="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_gravity="center"
+        android:textColor="#ED1F77"
+        android:layout_height="wrap_content"
+        android:text="Phản hồi"/>
+    <TextView
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#131313"
+        android:textSize="18dp"
+        android:text="Dự án"/>
+    <EditText
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:hint="Dự án"/>
+    <TextView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#131313"
+        android:textSize="18dp"
+        android:text="Thời gian"/>
+    <EditText
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:hint="Thời gian"/>
+    <TextView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#131313"
+        android:textSize="18dp"
+        android:text="Đối tượng"/>
+    <EditText
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:hint="Đối tượng"/>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#131313"
+            android:textSize="18dp"
+            android:text="Phản hồi "/>
+        <Spinner
+            android:id="@+id/feedback_spinner"
+            android:spinnerMode="dropdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:id="@+id/feedback_add"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="#131313"
+        android:textSize="18dp"
+        android:text="Ý kiến khác "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="#F64B85"
+        android:textColor="#F8F2F2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi"/>
+
+
+</LinearLayout>
