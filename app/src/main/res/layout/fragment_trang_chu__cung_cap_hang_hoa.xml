@@ -363,10 +363,10 @@
                 </LinearLayout>
 
                 <EditText
+                    android:layout_gravity="center"
                     android:id="@+id/tv_thoiGianDuKien"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -385,10 +385,10 @@
                         android:textStyle="bold" />
                 </LinearLayout>
                 <EditText
+                    android:layout_gravity="center"
                     android:id="@+id/tv_viTriKho"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
                     android:textSize="20sp"
                     android:textStyle="bold" />
             </LinearLayout>

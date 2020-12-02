@@ -233,9 +233,9 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/tv_taiTrong"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:layout_width="70dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
