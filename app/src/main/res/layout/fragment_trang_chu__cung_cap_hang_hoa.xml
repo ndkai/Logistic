@@ -353,22 +353,22 @@
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal"
                     android:weightSum="3">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Thời gian gửi hàng: "
+                        android:text="Thời gian gửi hàng"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/tv_thoiGianDuKien"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
+
+                <EditText
+                    android:id="@+id/tv_thoiGianDuKien"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -377,22 +377,20 @@
                     android:layout_marginEnd="20dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Địa điểm gửi hàng: "
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/tv_viTriKho"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="35dp"
+                        android:text="Địa điểm gửi hàng"
                         android:textSize="20sp"
                         android:textStyle="bold" />
                 </LinearLayout>
+                <EditText
+                    android:id="@+id/tv_viTriKho"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <Button
