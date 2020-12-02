@@ -233,9 +233,16 @@
                     android:textSize="20sp"/>
                 <EditText
                     android:id="@+id/tv_taiTrong"
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="70dp"
                     android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" kg"
                     android:textStyle="bold"
                     android:textSize="20sp"/>
             </LinearLayout>
