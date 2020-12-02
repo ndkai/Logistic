@@ -309,7 +309,7 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                 Toast.makeText(getContext(), "Không định vị được vị trí - Vui lòng khởi độnng wifi", Toast.LENGTH_SHORT).show();
                 btn_xacnhan.setEnabled(false);
             } else {
-                Toast.makeText(getContext(), "Kinh Độ : " + tv_vido.getText().toString() + "\n" + "Vĩ Độ" + tv_kinhdo.getText().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Đã xác định được vị trí của bạn \nKinh Độ : " + tv_vido.getText().toString() + "\n" + "Vĩ Độ : " + tv_kinhdo.getText().toString(), Toast.LENGTH_SHORT).show();
                 btn_xacnhan.setEnabled(true);
             }
 

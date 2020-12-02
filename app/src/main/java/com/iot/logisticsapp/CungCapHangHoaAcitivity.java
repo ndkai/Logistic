@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,10 +49,9 @@ public class CungCapHangHoaAcitivity extends AppCompatActivity {
                             Log.d(TAG,"error : " );
                             break;
                         case R.id.nav_feedback:
-                            Toast.makeText(CungCapHangHoaAcitivity.this, "Feedback", Toast.LENGTH_SHORT).show();
                             selecFragment = new FeedbackFragment();
                         case R.id.nav_hotro:
-                            Toast.makeText(CungCapHangHoaAcitivity.this, "Danh Sách Nhà Hảo Tâm", Toast.LENGTH_SHORT).show();
+                            break;
 
                     }
                     if(selecFragment!=null){
