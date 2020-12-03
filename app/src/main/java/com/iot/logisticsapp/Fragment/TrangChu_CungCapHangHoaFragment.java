@@ -53,11 +53,11 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
     LinearLayout ln_tuMangDenCCC;
     Spinner spn_loaiHang, spn_GiaoDuc ,spn_Yte , spn_NoiCuTru, spn_NhuYeuPham;
     Spinner spn_duAn;
-    String arr[] = {"Giáo dục", "Y tế", "Nơi cư trú", "Nhu yếu phẩm"};
-    String arr_giaoduc[] = {"Học Phí", "Tiếp cận dịch vụ", "Định hướng"};
-    String arr_yte[] = {"Chi Phí", "Tiếp cận dịch vụ", "Vật tư", "Nhân lực"};
-    String arr_noicutru[] = {"Tạm Thời", "Dài hạn"};
-    String arr4_nhuyeupham[] = {"Nước", "Dinh dưỡng", "Vệ sinh", "Thuốc men"};
+    String arr[] = {"Quần áo", "Y tế", "Dụng cụ học tập", "Nhu yếu phẩm"};
+    String arr_quanao[] = {"Quần áo"};
+    String arr_yte[] = {"Thuốc", "Dụng cụ y tế", "Dụng cụ sơ cứu"};
+    String arr_dungcuhoctap[] = {"Sách giáo khoa", "Dụng cụ học tập"};
+    String arr4_nhuyeupham[] = {"Thực phẩm khô", "Thực phẩm ăn liền", "Nước sạch", "Thuốc men"};
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private DocumentReference userRef = db.document("user/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -122,9 +122,9 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 String selectedItem = parent.getItemAtPosition(position).toString();
-                if(selectedItem.equals("Giáo dục"))
+                if(selectedItem.equals("Quần áo"))
                 {
-                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_giaoduc);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_quanao);
                     adapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
                     spn_GiaoDuc.setAdapter(adapter1);
                     spn_GiaoDuc.setVisibility(View.VISIBLE);
@@ -139,12 +139,12 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                     ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_yte);
                     adapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
                     spn_Yte.setAdapter(adapter1);
-                }else  if(selectedItem.equals("Nơi cư trú")) {
+                }else  if(selectedItem.equals("Dụng cụ học tập")) {
                     spn_GiaoDuc.setVisibility(View.GONE);
                     spn_NhuYeuPham.setVisibility(View.GONE);
                     spn_NoiCuTru.setVisibility(View.VISIBLE);
                     spn_Yte.setVisibility(View.GONE);
-                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_noicutru);
+                    ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, arr_dungcuhoctap);
                     adapter1.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
                     spn_NoiCuTru.setAdapter(adapter1);
                 } else {
@@ -174,11 +174,11 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                             tv_viTriKho.getText().toString().equals("")) {
                         Toast.makeText(getContext(), "Vui Lòng Điền Đủ Thông Tin", Toast.LENGTH_SHORT).show();
                     } else {
-                        if(spn_loaiHang.getSelectedItem().toString().equals("Giáo dục")){
+                        if(spn_loaiHang.getSelectedItem().toString().equals("Quần áo")){
                             addSave(spn_GiaoDuc.getSelectedItem().toString().trim());
                         } else if(spn_loaiHang.getSelectedItem().toString().equals("Y tế")){
                             addSave(spn_Yte.getSelectedItem().toString().trim());
-                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Nơi cư trú")){
+                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Dụng cụ học tập")){
                             addSave(spn_NoiCuTru.getSelectedItem().toString().trim());
                         } else {
                             addSave(spn_NhuYeuPham.getSelectedItem().toString().trim());
@@ -189,11 +189,11 @@ public class TrangChu_CungCapHangHoaFragment extends Fragment {
                           /*  tv_tenHang.getText().toString().equals("") || */tv_khoiLuongHang.getText().toString().equals("")) {
                         Toast.makeText(getContext(), "Vui Lòng Điền Đủ Thông Tin", Toast.LENGTH_SHORT).show();
                     } else {
-                        if(spn_loaiHang.getSelectedItem().toString().equals("Giáo dục")){
+                        if(spn_loaiHang.getSelectedItem().toString().equals("Quần áo")){
                             addSave(spn_GiaoDuc.getSelectedItem().toString().trim());
                         } else if(spn_loaiHang.getSelectedItem().toString().equals("Y tế")){
                             addSave(spn_Yte.getSelectedItem().toString().trim());
-                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Nơi cư trú")){
+                        } else if(spn_loaiHang.getSelectedItem().toString().equals("Dụng cụ học tập")){
                             addSave(spn_NoiCuTru.getSelectedItem().toString().trim());
                         } else {
                             addSave(spn_NhuYeuPham.getSelectedItem().toString().trim());
